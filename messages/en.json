@@ -3,7 +3,10 @@
     "appName": "LexPlain",
     "tryNow": "Try it now",
     "freeNoLogin": "100% free · No sign-up",
-    "howItWorks": "How it works"
+    "howItWorks": "How it works",
+    "remove": "Remove file",
+    "close": "Close",
+    "footerCredits": "Powered by Local Life R&D · Local Frontend · Takeout & Dine-in Team"
   },
   "home": {
     "badge": "Powered by JoyAI · Instant results",
@@ -13,13 +16,13 @@
     "statsDocs": "{count}+ documents analyzed",
     "statsTime": "Results in under 60 seconds",
     "statsRating": "{rating} / 5 from {count}+ users",
-    "tabFile": "📎  Upload file",
-    "tabText": "✏️  Paste text",
+    "tabFile": "Upload file",
+    "tabText": "Paste text",
     "dropHere": "Drop it here!",
     "dragDrop": "Drag & drop your document",
     "fileHint": "PDF, DOCX, or TXT · up to 50 pages",
     "browseFiles": "Browse files",
-    "readyToAnalyze": "Ready to analyze ✓",
+    "readyToAnalyze": "Ready to analyze",
     "popularTypes": "Popular document types:",
     "docTypes": {
       "nda": "NDA",

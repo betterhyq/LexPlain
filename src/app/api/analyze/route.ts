@@ -2,19 +2,33 @@ import { NextRequest, NextResponse } from "next/server";
 import { getAnalyzeSystemPrompt, parseJoyAIJson, JoyAIFetch } from "@/lib/utils";
 import { recordAnalysis } from "@/lib/db";
 
+const MIN_TEXT_LENGTH = 20;
+const MAX_TEXT_LENGTH = 12000;
+
 export async function POST(req: NextRequest) {
   try {
-    const { text, locale } = await req.json();
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
+      return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
+    }
+    const { text, locale } = body as { text?: unknown; locale?: unknown };
 
-    if (!text || typeof text !== "string" || text.trim().length < 20) {
+    if (!text || typeof text !== "string") {
+      return NextResponse.json({ error: "Document text is required." }, { status: 400 });
+    }
+    const trimmed = text.trim();
+    if (trimmed.length < MIN_TEXT_LENGTH) {
       return NextResponse.json({ error: "Document text is too short." }, { status: 400 });
     }
 
-    const systemPrompt = getAnalyzeSystemPrompt(locale || "en");
+    const localeStr = typeof locale === "string" ? locale : "en";
+    const systemPrompt = getAnalyzeSystemPrompt(localeStr);
 
     const response = await JoyAIFetch([
       { role: "system", content: systemPrompt },
-      { role: "user", content: `Analyze this legal document:\n\n${text.slice(0, 12000)}` },
+      { role: "user", content: `Analyze this legal document:\n\n${trimmed.slice(0, MAX_TEXT_LENGTH)}` },
     ], 2000);
 
     if (!response.ok) {
@@ -28,9 +42,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Empty response from JoyAI." }, { status: 502 });
     }
 
-    const result = parseJoyAIJson(content);
+    const parsed = parseJoyAIJson(content);
+    if (!parsed || typeof parsed !== "object" || !("title" in parsed) || !("clauses" in parsed)) {
+      return NextResponse.json({ error: "Invalid analysis structure from AI." }, { status: 502 });
+    }
     await recordAnalysis().catch(() => {});
-    return NextResponse.json(result);
+    return NextResponse.json(parsed);
   } catch (err) {
     console.error("[/api/analyze]", err);
     return NextResponse.json(

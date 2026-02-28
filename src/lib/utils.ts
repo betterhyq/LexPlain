@@ -43,20 +43,34 @@ export function getAnalyzeSystemPrompt(locale: string = "en"): string {
   return `${SYSTEM_PROMPT_BASE}\n\n${langInstr}\n- Return ONLY the JSON object, no markdown, no explanation`;
 }
 
-export function parseJoyAIJson(content: string) {
+export function parseJoyAIJson(content: string): unknown {
   const clean = content
     .replace(/^```(?:json)?\s*/i, "")
     .replace(/\s*```$/i, "")
     .trim();
-  return JSON.parse(clean);
+  try {
+    return JSON.parse(clean);
+  } catch {
+    throw new Error("Invalid JSON in AI response.");
+  }
 }
 
 export function JoyAIFetch(messages: { role: string; content: string }[], maxTokens = 2000) {
-  return fetch(`${process.env.CHATRHINO_API_URL}/chat/completions`, {
+  const apiUrl = process.env.CHATRHINO_API_URL;
+  const apiKey = process.env.CHATRHINO_API_KEY;
+  if (!apiUrl || !apiKey) {
+    return Promise.resolve(
+      new Response(
+        JSON.stringify({ error: "JoyAI is not configured. Set CHATRHINO_API_URL and CHATRHINO_API_KEY." }),
+        { status: 503, headers: { "Content-Type": "application/json" } }
+      )
+    );
+  }
+  return fetch(`${apiUrl}/chat/completions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.CHATRHINO_API_KEY}`,
+      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
       model: process.env.CHATRHINO_MODEL || "JoyAI-chat",

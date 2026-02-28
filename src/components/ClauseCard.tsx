@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, memo } from "react";
 import { ChevronDown, ChevronUp, CheckCircle, AlertTriangle, ArrowRight } from "lucide-react";
 import { Clause, Risk } from "@/types";
 import { RiskBadge } from "./RiskIndicators";
 
-export function ClauseCard({ clause, index }: { clause: Clause; index: number }) {
+function ClauseCardInner({ clause, index }: { clause: Clause; index: number }) {
   const [open, setOpen] = useState(false);
   const risk = clause.risk as Risk;
 
@@ -57,3 +57,5 @@ export function ClauseCard({ clause, index }: { clause: Clause; index: number })
     </div>
   );
 }
+
+export const ClauseCard = memo(ClauseCardInner);

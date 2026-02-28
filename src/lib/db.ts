@@ -25,17 +25,16 @@ async function getSql() {
 
 function loadDbBuffer(): Buffer | null {
   ensureDir();
-  if (fs.existsSync(DB_PATH)) {
+  try {
     return fs.readFileSync(DB_PATH);
+  } catch {
+    return null;
   }
-  return null;
 }
 
 function saveDb(db: SqlDb) {
   ensureDir();
-  const data = db.export();
-  const buffer = Buffer.from(data);
-  fs.writeFileSync(DB_PATH, buffer);
+  fs.writeFileSync(DB_PATH, Buffer.from(db.export()));
 }
 
 function runMigrations(db: SqlDb) {

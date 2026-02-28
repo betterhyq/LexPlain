@@ -6,6 +6,7 @@ import { Star, X } from "lucide-react";
 
 export function RatingWidget() {
   const t = useTranslations("home");
+  const tCommon = useTranslations("common");
   const [open, setOpen] = useState(false);
   const [hover, setHover] = useState(0);
   const [selected, setSelected] = useState(0);
@@ -57,7 +58,7 @@ export function RatingWidget() {
           type="button"
           onClick={() => setOpen(false)}
           className="p-1 text-zinc-400 hover:text-zinc-600 rounded-lg hover:bg-slate-100 active:scale-[0.98]"
-          aria-label="Close"
+          aria-label={tCommon("close")}
         >
           <X size={16} />
         </button>

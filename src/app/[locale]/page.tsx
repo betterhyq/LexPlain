@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import {
-  Upload, FileText, Shield, Zap, Lock, ArrowRight, X, Sparkles,
+  Upload, FileText, Zap, Lock, ArrowRight, X, Sparkles,
   TrendingUp, Scale, Home, Briefcase, FileSignature, CheckCircle,
   Star, Users, Clock, AlertTriangle, ListChecks,
 } from "lucide-react";
@@ -212,7 +212,7 @@ export default function HomePage() {
                         <p className="font-semibold text-zinc-900 text-sm truncate">{file.name}</p>
                         <p className="text-xs text-emerald-600 mt-0.5 font-medium">{t("readyToAnalyze")}</p>
                       </div>
-                      <button type="button" onClick={() => setFile(null)} className="p-1.5 text-zinc-400 hover:text-zinc-700 hover:bg-slate-200/60 rounded-lg transition-colors duration-200 ease-[var(--ease-out-expo)] active:scale-[0.98]" aria-label={tCommon("remove") || "Remove file"}>
+                      <button type="button" onClick={() => setFile(null)} className="p-1.5 text-zinc-400 hover:text-zinc-700 hover:bg-slate-200/60 rounded-lg transition-colors duration-200 ease-[var(--ease-out-expo)] active:scale-[0.98]" aria-label={tCommon("remove")}>
                         <X size={18} strokeWidth={2} />
                       </button>
                     </div>

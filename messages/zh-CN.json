@@ -3,7 +3,10 @@
     "appName": "LexPlain",
     "tryNow": "立即使用",
     "freeNoLogin": "完全免费 · 无需登录",
-    "howItWorks": "使用流程"
+    "howItWorks": "使用流程",
+    "remove": "移除文件",
+    "close": "关闭",
+    "footerCredits": "本地生活服务研发部 · 本地前端研发部 · 外卖到店前端组"
   },
   "home": {
     "badge": "由 JoyAI 驱动 · 即时结果",
@@ -13,13 +16,13 @@
     "statsDocs": "已分析 {count}+ 份文档",
     "statsTime": "约 60 秒内完成分析",
     "statsRating": "{count}+ 用户好评 {rating} / 5",
-    "tabFile": "📎  上传文件",
-    "tabText": "✏️  粘贴文本",
+    "tabFile": "上传文件",
+    "tabText": "粘贴文本",
     "dropHere": "松开鼠标即可上传",
     "dragDrop": "拖拽您的文档到此处",
     "fileHint": "PDF、DOCX 或 TXT · 最多 50 页",
     "browseFiles": "选择文件",
-    "readyToAnalyze": "准备分析 ✓",
+    "readyToAnalyze": "准备分析",
     "popularTypes": "常见文档类型：",
     "docTypes": {
       "nda": "保密协议",

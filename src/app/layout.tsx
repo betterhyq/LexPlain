@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import "@jd/joyrepo-fonts/install.css"
+import "@jd/joyrepo-fonts/install.css";
 import "./globals.css";
-
-const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "LexPlain — Legal Documents in Plain English",
