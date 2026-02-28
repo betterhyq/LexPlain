@@ -317,19 +317,6 @@ export default function HomePage() {
             </aside>
           </div>
         </div>
-
-        <div className="max-w-6xl mx-auto w-full mt-12 flex flex-wrap items-center justify-center gap-8 animate-fade-in animate-delay-400">
-          {[
-            { icon: <Shield size={14} />, text: t("trustAPI") },
-            { icon: <Zap size={14} />, text: t("trustJoyAI") },
-            { icon: <Scale size={14} />, text: t("trustDisclaimer") },
-          ].map((b) => (
-            <div key={b.text} className="flex items-center gap-2 text-sm text-zinc-500">
-              <span className="text-emerald-600">{b.icon}</span>
-              {b.text}
-            </div>
-          ))}
-        </div>
       </main>
       <Footer />
       <RatingWidget />
