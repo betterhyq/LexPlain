@@ -41,10 +41,23 @@ html, body {
 .animate-delay-200 { animation-delay: 0.2s; }
 .animate-delay-300 { animation-delay: 0.3s; }
 .animate-delay-400 { animation-delay: 0.4s; }
+.animate-delay-500 { animation-delay: 0.5s; }
 
 /* Accent highlight: single emerald, no purple (Lila ban) */
 .hero-accent {
   color: rgb(5 150 105);
+}
+
+/* typed.js cursor: match hero accent, hardware-accelerated blink */
+.typed-cursor {
+  color: rgb(5 150 105);
+  font-weight: 700;
+  opacity: 1;
+  animation: cursorBlink 0.7s var(--ease-out-expo) infinite;
+}
+@keyframes cursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.25; }
 }
 
 /* Print: hide nav, show report only */

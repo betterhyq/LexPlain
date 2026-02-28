@@ -11,6 +11,7 @@ import {
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { Footer } from "@/components/Footer";
 import { RatingWidget } from "@/components/RatingWidget";
+import { HeroTypewriter } from "@/components/HeroTypewriter";
 
 export default function HomePage() {
   const t = useTranslations("home");
@@ -138,9 +139,14 @@ export default function HomePage() {
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-900 leading-[1.12] mb-5 tracking-tighter max-w-[28ch]">
                 {t("heroTitle")}
-                <span className="hero-accent">{t("heroHighlight")}</span>
+                <HeroTypewriter
+                  text={t("heroHighlight")}
+                  typeSpeed={48}
+                  startDelay={320}
+                  className="hero-accent"
+                />
               </h1>
-              <p className="text-base text-zinc-600 leading-relaxed max-w-[65ch] md:text-lg">
+              <p className="text-base text-zinc-600 leading-relaxed max-w-[65ch] md:text-lg animate-fade-in animate-delay-300">
                 {t("heroSubtitle")}
               </p>
             </div>
@@ -275,7 +281,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <aside className="lg:col-span-4 flex flex-col">
+            <aside className="lg:col-span-4 flex flex-col animate-slide-up animate-delay-300">
               <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-4">
                 {tCommon("howItWorks")}
               </p>
