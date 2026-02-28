@@ -18,12 +18,12 @@ function ClauseCardInner({ clause, index }: { clause: Clause; index: number }) {
 
   return (
     <div
-      className={`rounded-2xl border border-slate-200/80 border-l-4 ${borderColor} ${bgColor} shadow-sm hover:shadow-md transition-shadow duration-200 animate-fade-in`}
+      className={`rounded-xl border border-slate-200/80 border-l-4 ${borderColor} ${bgColor} shadow-sm hover:shadow-md transition-shadow duration-200 animate-fade-in`}
       style={{ animationDelay: `${index * 60}ms` }}
     >
       <button
         type="button"
-        className="w-full flex items-start justify-between p-4 md:p-5 text-left gap-3 rounded-2xl hover:bg-slate-50/50 transition-colors active:scale-[0.995]"
+        className="w-full flex items-start justify-between p-4 md:p-5 text-left gap-3 rounded-xl hover:bg-slate-50/50 transition-colors active:scale-[0.995]"
         onClick={() => setOpen(!open)}
       >
         <div className="flex items-start gap-3 flex-1 min-w-0">
@@ -43,11 +43,11 @@ function ClauseCardInner({ clause, index }: { clause: Clause; index: number }) {
 
       {open && (
         <div className="px-4 pb-4 pt-0 ml-7 md:ml-8 space-y-3 animate-fade-in">
-          <div className="bg-white/80 border border-slate-200 rounded-xl p-4 text-sm text-zinc-700 leading-relaxed">
+          <div className="bg-white/80 border border-slate-200 rounded-lg p-4 text-sm text-zinc-700 leading-relaxed">
             {clause.detail}
           </div>
           {clause.action && (
-            <div className="flex items-start gap-2 bg-emerald-50 border border-emerald-100 rounded-xl p-4">
+            <div className="flex items-start gap-2 bg-emerald-50 border border-emerald-100 rounded-lg p-4">
               <ArrowRight size={16} className="text-emerald-600 shrink-0 mt-0.5" />
               <p className="text-sm text-emerald-800 font-medium">{clause.action}</p>
             </div>

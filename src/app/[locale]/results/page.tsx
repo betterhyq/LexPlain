@@ -92,7 +92,7 @@ export default function ResultsPage() {
       <header className="print:hidden relative z-10 bg-white/95 backdrop-blur-sm border-b border-slate-200/80 px-6 py-4 sticky top-0 shadow-sm">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 bg-emerald-600 rounded-xl flex items-center justify-center shadow-[0_4px_14px_-2px_rgba(5,150,105,0.25)]">
+            <div className="w-9 h-9 bg-emerald-600 rounded-lg flex items-center justify-center shadow-[0_4px_14px_-2px_rgba(5,150,105,0.25)]">
               <FileText size={18} className="text-white" />
             </div>
             <span className="font-bold text-zinc-900 text-lg tracking-tight cursor-pointer" onClick={() => router.push("/")}>{tCommon("appName")}</span>
@@ -109,7 +109,7 @@ export default function ResultsPage() {
             <button
               type="button"
               onClick={() => router.push("/")}
-              className="text-sm text-emerald-600 font-semibold border border-emerald-200 px-4 py-2 rounded-xl hover:bg-emerald-50 transition-colors active:scale-[0.98]"
+              className="text-sm text-emerald-600 font-semibold border border-emerald-200 px-4 py-2 rounded-lg hover:bg-emerald-50 transition-colors active:scale-[0.98]"
             >
               {t("newDocument")}
             </button>
@@ -119,7 +119,7 @@ export default function ResultsPage() {
 
       <main className="relative z-10 flex-1 w-full px-4 pt-10 pb-20">
         <div className="max-w-3xl mx-auto space-y-5">
-        <div className="bg-white/95 backdrop-blur-sm rounded-[2.5rem] border border-slate-200/60 p-6 md:p-8 animate-fade-in shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] hover:shadow-[0_24px_48px_-16px_rgba(0,0,0,0.08)] transition-shadow duration-300">
+        <div className="bg-white/95 backdrop-blur-sm rounded-lg border border-slate-200/60 p-6 md:p-8 animate-fade-in shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] hover:shadow-[0_24px_48px_-16px_rgba(0,0,0,0.08)] transition-shadow duration-300">
           <div className="flex items-center gap-2 mb-4">
             <FileText size={16} className="text-emerald-600" />
             <span className="text-sm text-zinc-500 font-medium">{filename}</span>
@@ -146,8 +146,8 @@ export default function ResultsPage() {
         </div>
 
         {highRisk > 0 && (
-          <div className="bg-red-50/90 border border-red-200 rounded-[2.5rem] p-5 flex items-start gap-4 animate-fade-in animate-delay-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
-            <div className="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center shrink-0">
+          <div className="bg-red-50/90 border border-red-200 rounded-lg p-5 flex items-start gap-4 animate-fade-in animate-delay-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
+            <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center shrink-0">
               <AlertTriangle size={18} className="text-red-600" />
             </div>
             <div>
@@ -161,9 +161,9 @@ export default function ResultsPage() {
           </div>
         )}
 
-        <div className="bg-white/95 backdrop-blur-sm rounded-[2.5rem] border border-slate-200/60 p-6 md:p-8 animate-fade-in animate-delay-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] hover:shadow-[0_24px_48px_-16px_rgba(0,0,0,0.08)] transition-shadow duration-300">
+        <div className="bg-white/95 backdrop-blur-sm rounded-lg border border-slate-200/60 p-6 md:p-8 animate-fade-in animate-delay-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] hover:shadow-[0_24px_48px_-16px_rgba(0,0,0,0.08)] transition-shadow duration-300">
           <h2 className="font-bold text-zinc-900 mb-4 flex items-center gap-2.5 text-base">
-            <div className="w-8 h-8 bg-emerald-100 rounded-xl flex items-center justify-center">
+            <div className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center">
               <CheckCircle size={16} className="text-emerald-600" />
             </div>
             {t("plainSummary")}
@@ -172,9 +172,9 @@ export default function ResultsPage() {
         </div>
 
         {result.actions?.length > 0 && (
-          <div className="bg-amber-50/80 border border-amber-200/80 rounded-[2.5rem] p-6 md:p-8 animate-fade-in animate-delay-200 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
+          <div className="bg-amber-50/80 border border-amber-200/80 rounded-lg p-6 md:p-8 animate-fade-in animate-delay-200 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
             <h2 className="font-bold text-zinc-900 mb-4 flex items-center gap-2.5 text-base">
-              <div className="w-8 h-8 bg-amber-100 rounded-xl flex items-center justify-center">
+              <div className="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center">
                 <AlertTriangle size={16} className="text-amber-600" />
               </div>
               {t("whatToDo")}
@@ -204,9 +204,9 @@ export default function ResultsPage() {
           </div>
         </div>
 
-        <div className="print:hidden bg-white/95 backdrop-blur-sm rounded-[2.5rem] border border-slate-200/60 p-6 md:p-8 animate-fade-in animate-delay-400 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] hover:shadow-[0_24px_48px_-16px_rgba(0,0,0,0.08)] transition-shadow duration-300">
+        <div className="print:hidden bg-white/95 backdrop-blur-sm rounded-lg border border-slate-200/60 p-6 md:p-8 animate-fade-in animate-delay-400 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] hover:shadow-[0_24px_48px_-16px_rgba(0,0,0,0.08)] transition-shadow duration-300">
           <div className="flex items-center gap-2.5 mb-1">
-            <div className="w-8 h-8 bg-emerald-100 rounded-xl flex items-center justify-center">
+            <div className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center">
               <MessageSquare size={16} className="text-emerald-600" />
             </div>
             <h2 className="font-bold text-zinc-900 text-base">{t("askTitle")}</h2>
@@ -221,13 +221,13 @@ export default function ResultsPage() {
               onChange={(e) => setQuestion(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleAsk()}
               placeholder={t("askPlaceholder")}
-              className="flex-1 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-300 bg-slate-50/80 focus:bg-white transition-all"
+              className="flex-1 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-emerald-300 bg-slate-50/80 focus:bg-white transition-all"
             />
             <button
               type="button"
               onClick={handleAsk}
               disabled={asking || !question.trim()}
-              className="bg-emerald-600 text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-emerald-700 disabled:bg-slate-200 disabled:text-slate-400 transition-all min-w-[72px] shadow-[0_4px_14px_-2px_rgba(5,150,105,0.3)] active:scale-[0.98]"
+              className="bg-emerald-600 text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-emerald-700 disabled:bg-slate-200 disabled:text-slate-400 transition-all min-w-[72px] shadow-[0_4px_14px_-2px_rgba(5,150,105,0.3)] active:scale-[0.98]"
             >
               {asking ? (
                 <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -237,15 +237,12 @@ export default function ResultsPage() {
             </button>
           </div>
           {answer && (
-            <div className="mt-4 p-4 bg-emerald-50 border border-emerald-100 rounded-2xl text-sm text-emerald-900 leading-relaxed">
+            <div className="mt-4 p-4 bg-emerald-50 border border-emerald-100 rounded-lg text-sm text-emerald-900 leading-relaxed">
               {answer}
             </div>
           )}
         </div>
 
-        <p className="print:hidden text-center text-sm text-zinc-500 pb-2 flex items-center justify-center gap-1.5">
-          {t("exportHint")}
-        </p>
         <p className="text-center text-xs text-zinc-400 pb-4 flex items-center justify-center gap-1 print:text-zinc-600 print:pt-6">
           <Shield size={10} />
           {t("legalDisclaimer")}

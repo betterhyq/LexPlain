@@ -118,7 +118,7 @@ export default function HomePage() {
       <header className="relative z-10 px-4 sm:px-6 py-4">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-emerald-600 rounded-xl flex items-center justify-center shadow-[0_4px_14px_-2px_rgba(5,150,105,0.22)] ring-1 ring-black/5">
+            <div className="w-9 h-9 bg-emerald-600 rounded-lg flex items-center justify-center shadow-[0_4px_14px_-2px_rgba(5,150,105,0.22)] ring-1 ring-black/5">
               <FileText size={18} className="text-white" strokeWidth={2} />
             </div>
             <span className="font-bold text-zinc-900 text-lg tracking-tight cursor-pointer select-none" onClick={() => router.push("/")}>{tCommon("appName")}</span>
@@ -170,7 +170,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto w-full animate-slide-up animate-delay-200">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             <div className="lg:col-span-8">
-              <div className="bg-white rounded-[2.5rem] border border-slate-200/50 overflow-hidden shadow-[var(--shadow-glass)] hover:shadow-[var(--shadow-glass-hover)] transition-shadow duration-300 ease-[var(--ease-out-expo)]">
+              <div className="bg-white rounded-xl border border-slate-200/50 overflow-hidden shadow-[var(--shadow-glass)] hover:shadow-[var(--shadow-glass-hover)] transition-shadow duration-300 ease-[var(--ease-out-expo)]">
             <div className="flex border-b border-slate-100 bg-slate-50/40">
               {(["file", "text"] as const).map((mode) => (
                 <button
@@ -190,12 +190,12 @@ export default function HomePage() {
                   {!file ? (
                     <label
                       htmlFor="file-upload"
-                      className={`flex flex-col items-center justify-center gap-5 p-10 rounded-2xl border-2 border-dashed cursor-pointer transition-all duration-300 ease-[var(--ease-out-expo)] focus-within:ring-2 focus-within:ring-emerald-400/40 focus-within:border-emerald-400 ${dragging ? "border-emerald-500 bg-emerald-50/80" : "border-slate-200 hover:border-emerald-400/80 hover:bg-emerald-50/50"}`}
+                      className={`flex flex-col items-center justify-center gap-5 p-10 rounded-xl border-2 border-dashed cursor-pointer transition-all duration-300 ease-[var(--ease-out-expo)] focus-within:ring-2 focus-within:ring-emerald-400/40 focus-within:border-emerald-400 ${dragging ? "border-emerald-500 bg-emerald-50/80" : "border-slate-200 hover:border-emerald-400/80 hover:bg-emerald-50/50"}`}
                       onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
                       onDragLeave={() => setDragging(false)}
                       onDrop={handleDrop}
                     >
-                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-transform duration-300 ease-[var(--ease-out-expo)] ${dragging ? "bg-emerald-200/80 scale-105" : "bg-slate-100"}`}>
+                      <div className={`w-16 h-16 rounded-lg flex items-center justify-center transition-transform duration-300 ease-[var(--ease-out-expo)] ${dragging ? "bg-emerald-200/80 scale-105" : "bg-slate-100"}`}>
                         <Upload size={28} strokeWidth={1.8} className={dragging ? "text-emerald-600" : "text-slate-400"} />
                       </div>
                       <div className="text-center">
@@ -204,14 +204,14 @@ export default function HomePage() {
                         </p>
                         <p className="text-xs text-zinc-500 mt-1">{t("fileHint")}</p>
                       </div>
-                      <span className="text-sm text-emerald-600 font-semibold border border-emerald-200/80 bg-emerald-50 px-5 py-2 rounded-xl hover:bg-emerald-100/80 transition-colors duration-200 ease-[var(--ease-out-expo)] active:scale-[0.98]">
+                      <span className="text-sm text-emerald-600 font-semibold border border-emerald-200/80 bg-emerald-50 px-5 py-2 rounded-lg hover:bg-emerald-100/80 transition-colors duration-200 ease-[var(--ease-out-expo)] active:scale-[0.98]">
                         {t("browseFiles")}
                       </span>
                       <input id="file-upload" type="file" className="hidden" accept=".pdf,.doc,.docx,.txt" onChange={handleFileInput} />
                     </label>
                   ) : (
-                    <div className="flex items-center gap-4 p-5 bg-emerald-50/70 border border-emerald-100/80 rounded-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.6)]">
-                      <div className="w-12 h-12 bg-emerald-100/90 rounded-xl flex items-center justify-center shrink-0">
+                    <div className="flex items-center gap-4 p-5 bg-emerald-50/70 border border-emerald-100/80 rounded-lg shadow-[inset_0_1px_0_0_rgba(255,255,255,0.6)]">
+                      <div className="w-12 h-12 bg-emerald-100/90 rounded-lg flex items-center justify-center shrink-0">
                         <FileText size={20} strokeWidth={1.8} className="text-emerald-600" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -231,7 +231,7 @@ export default function HomePage() {
                         <button
                           key={d.labelKey}
                           type="button"
-                          className="flex items-center gap-1.5 text-xs text-zinc-600 border border-slate-200 rounded-xl px-3 py-1.5 hover:border-emerald-300 hover:text-emerald-600 hover:bg-emerald-50/50 transition-colors duration-200 ease-[var(--ease-out-expo)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-emerald-400/30"
+                          className="flex items-center gap-1.5 text-xs text-zinc-600 border border-slate-200 rounded-lg px-3 py-1.5 hover:border-emerald-300 hover:text-emerald-600 hover:bg-emerald-50/50 transition-colors duration-200 ease-[var(--ease-out-expo)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-emerald-400/30"
                         >
                           {d.icon} {t(`docTypes.${d.labelKey}`)}
                         </button>
@@ -244,12 +244,12 @@ export default function HomePage() {
                   value={pasteText}
                   onChange={(e) => setPasteText(e.target.value)}
                   placeholder={t("pastePlaceholder")}
-                  className="w-full h-44 rounded-2xl border border-slate-200 bg-slate-50/80 px-4 py-3.5 text-sm text-zinc-700 placeholder-zinc-400 resize-none focus:outline-none focus:ring-2 focus:ring-emerald-400/40 focus:border-emerald-300 focus:bg-white transition-[border-color,box-shadow,background] duration-200 ease-[var(--ease-out-expo)]"
+                  className="w-full h-44 rounded-lg border border-slate-200 bg-slate-50/80 px-4 py-3.5 text-sm text-zinc-700 placeholder-zinc-400 resize-none focus:outline-none focus:ring-2 focus:ring-emerald-400/40 focus:border-emerald-300 focus:bg-white transition-[border-color,box-shadow,background] duration-200 ease-[var(--ease-out-expo)]"
                 />
               )}
 
               {error && (
-                <div className="mt-4 p-4 bg-red-50/90 border border-red-200/80 rounded-2xl text-sm text-red-800 flex items-start gap-2.5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.4)]">
+                <div className="mt-4 p-4 bg-red-50/90 border border-red-200/80 rounded-lg text-sm text-red-800 flex items-start gap-2.5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.4)]">
                   <AlertTriangle size={16} strokeWidth={1.8} className="shrink-0 mt-0.5 text-red-600" />
                   {error}
                 </div>
@@ -259,7 +259,7 @@ export default function HomePage() {
                 type="button"
                 onClick={handleSubmit}
                 disabled={!canAnalyze || loading}
-                className="mt-6 w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 text-sm shadow-[0_4px_14px_-2px_rgba(5,150,105,0.3)] hover:shadow-[0_6px_20px_-2px_rgba(5,150,105,0.35)] disabled:shadow-none transition-[transform,background,box-shadow] duration-200 ease-[var(--ease-out-expo)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+                className="mt-6 w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-200 disabled:text-slate-400 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg flex items-center justify-center gap-2 text-sm shadow-[0_4px_14px_-2px_rgba(5,150,105,0.3)] hover:shadow-[0_6px_20px_-2px_rgba(5,150,105,0.35)] disabled:shadow-none transition-[transform,background,box-shadow] duration-200 ease-[var(--ease-out-expo)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
               >
                 {loading ? (
                   <>
@@ -285,10 +285,10 @@ export default function HomePage() {
               <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-4">
                 {tCommon("howItWorks")}
               </p>
-              <ul className="space-y-0 divide-y divide-slate-100 rounded-[2rem] border border-slate-200/50 bg-white p-6 md:p-8 shadow-[var(--shadow-glass)]">
+              <ul className="space-y-0 divide-y divide-slate-100 rounded-xl border border-slate-200/50 bg-white p-6 md:p-8 shadow-[var(--shadow-glass)]">
                 {STEPS.map((step) => (
                   <li key={step.label} className="flex gap-4 py-5 first:pt-0 last:pb-0">
-                    <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200/50 flex items-center justify-center text-emerald-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.7)]">
+                    <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-emerald-50 border border-emerald-200/50 flex items-center justify-center text-emerald-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.7)]">
                       {step.icon}
                     </span>
                     <div className="min-w-0">

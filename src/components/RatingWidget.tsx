@@ -30,7 +30,7 @@ export function RatingWidget() {
 
   if (submitted) {
     return (
-      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-2xl border border-emerald-200/80 bg-white/95 px-4 py-3 shadow-lg backdrop-blur-sm">
+      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-xl border border-emerald-200/80 bg-white/95 px-4 py-3 shadow-lg backdrop-blur-sm">
         <span className="text-sm font-medium text-emerald-700">{t("ratingThanks")}</span>
       </div>
     );
@@ -41,7 +41,7 @@ export function RatingWidget() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-2xl border border-slate-200/80 bg-white/95 px-4 py-3 shadow-lg backdrop-blur-sm hover:border-emerald-300 hover:shadow-emerald-100/50 transition-all active:scale-[0.98]"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-xl border border-slate-200/80 bg-white/95 px-4 py-3 shadow-lg backdrop-blur-sm hover:border-emerald-300 hover:shadow-emerald-100/50 transition-all active:scale-[0.98]"
         aria-label={t("ratingTitle")}
       >
         <Star size={18} className="text-amber-500 fill-amber-500" />
@@ -51,7 +51,7 @@ export function RatingWidget() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 rounded-2xl border border-slate-200/80 bg-white/95 p-4 shadow-lg backdrop-blur-sm">
+    <div className="fixed bottom-6 right-6 z-50 rounded-xl border border-slate-200/80 bg-white/95 p-4 shadow-lg backdrop-blur-sm">
       <div className="flex items-center justify-between mb-2">
         <span className="text-sm font-semibold text-zinc-800">{t("ratingTitle")}</span>
         <button
@@ -88,7 +88,7 @@ export function RatingWidget() {
         type="button"
         onClick={handleSubmit}
         disabled={selected < 1 || sending}
-        className="w-full py-2 rounded-xl bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors active:scale-[0.98]"
+        className="w-full py-2 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors active:scale-[0.98]"
       >
         {sending ? "…" : t("ratingSubmit")}
       </button>
