@@ -79,7 +79,3 @@ Copy `.env.example` to `.env` and fill in your credentials.
 ## Deployment
 
 Deploy to [Vercel](https://vercel.com) or any Node.js platform. See [Next.js deployment docs](https://nextjs.org/docs/app/building-your-application/deploying) for more.
-
-## License
-
-Private.
