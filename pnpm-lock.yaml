@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@jd/joyrepo-fonts':
-        specifier: 1.0.0
-        version: 1.0.0
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -39,7 +36,7 @@ importers:
         specifier: 3.5.0
         version: 3.5.0
       typed.js:
-        specifier: ^3.0.0
+        specifier: 3.0.0
         version: 3.0.0
     devDependencies:
       '@tailwindcss/postcss':
@@ -55,7 +52,7 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(@types/react@19.2.14)
       eslint:
-        specifier: ^9
+        specifier: 9.39.3
         version: 9.39.3(jiti@2.6.1)
       eslint-config-next:
         specifier: 16.1.6
@@ -357,9 +354,6 @@ packages:
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [win32]
-
-  '@jd/joyrepo-fonts@1.0.0':
-    resolution: {integrity: sha1-8deZvJ5UlpM3XhXh/EtIdzTWpBY=, tarball: http://registry.m.jd.com/@jd/joyrepo-fonts/download/@jd/joyrepo-fonts-1.0.0.tgz}
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -2491,8 +2485,6 @@ snapshots:
 
   '@img/sharp-win32-x64@0.34.5':
     optional: true
-
-  '@jd/joyrepo-fonts@1.0.0': {}
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
