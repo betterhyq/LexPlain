@@ -145,7 +145,7 @@ export default function HomePage() {
           ))}
         </div>
 
-        <div className="w-full max-w-xl animate-slide-up animate-delay-200">
+        <div className="w-full max-w-2xl animate-slide-up animate-delay-200">
           <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl shadow-indigo-100/40 border border-gray-200/80 overflow-hidden hover:shadow-indigo-200/30 transition-shadow duration-300">
             <div className="flex border-b border-gray-100 bg-gray-50/50">
               {(["file", "text"] as const).map((mode) => (
