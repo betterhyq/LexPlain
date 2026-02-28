@@ -60,11 +60,11 @@ export async function JoyAIFetch(
   messages: { role: string; content: string }[],
   maxTokens = 2000
 ): Promise<Response> {
-  const apiUrl = process.env.CHATRHINO_API_URL;
-  const apiKey = process.env.CHATRHINO_API_KEY;
+  const apiUrl = process.env.LLM_API_URL;
+  const apiKey = process.env.LLM_API_KEY;
   if (!apiUrl || !apiKey) {
     return new Response(
-      JSON.stringify({ error: "JoyAI is not configured. Set CHATRHINO_API_URL and CHATRHINO_API_KEY." }),
+      JSON.stringify({ error: "JoyAI is not configured. Set LLM_API_URL and LLM_API_KEY." }),
       { status: 503, headers: { "Content-Type": "application/json" } }
     );
   }
@@ -72,7 +72,7 @@ export async function JoyAIFetch(
   try {
     const client = new OpenAI({ baseURL: apiUrl, apiKey });
     const completion = await client.chat.completions.create({
-      model: process.env.CHATRHINO_MODEL || "JoyAI-chat",
+      model: process.env.LLM_MODEL || "JoyAI-chat",
       messages: messages.map((m) => ({
         role: m.role as "system" | "user" | "assistant",
         content: m.content,
