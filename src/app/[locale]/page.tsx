@@ -6,7 +6,7 @@ import { useTranslations, useLocale } from "next-intl";
 import {
   Upload, FileText, Shield, Zap, Lock, ArrowRight, X, Sparkles,
   TrendingUp, Scale, Home, Briefcase, FileSignature, CheckCircle,
-  Star, Users, Clock, AlertTriangle,
+  Star, Users, Clock, AlertTriangle, ListChecks,
 } from "lucide-react";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { Footer } from "@/components/Footer";
@@ -164,8 +164,10 @@ export default function HomePage() {
           ))}
         </div>
 
-        <div className="w-full max-w-2xl mx-auto animate-slide-up animate-delay-200">
-          <div className="bg-white/95 backdrop-blur-sm rounded-[2.5rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] border border-slate-200/60 overflow-hidden hover:shadow-[0_24px_48px_-16px_rgba(0,0,0,0.08)] transition-shadow duration-300">
+        <div className="max-w-6xl mx-auto w-full animate-slide-up animate-delay-200">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            <div className="lg:col-span-8">
+              <div className="bg-white/95 backdrop-blur-sm rounded-[2.5rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] border border-slate-200/60 overflow-hidden hover:shadow-[0_24px_48px_-16px_rgba(0,0,0,0.08)] transition-shadow duration-300">
             <div className="flex border-b border-slate-100 bg-slate-50/50">
               {(["file", "text"] as const).map((mode) => (
                 <button
@@ -273,6 +275,46 @@ export default function HomePage() {
                 {t("privacyNote")}
               </p>
             </div>
+              </div>
+            </div>
+
+            <aside className="lg:col-span-4 flex flex-col gap-6">
+              <div className="p-6 md:p-8">
+                <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-5">
+                  {tCommon("howItWorks")}
+                </p>
+                <ul className="space-y-5">
+                  {STEPS.map((step) => (
+                    <li key={step.label} className="flex gap-4">
+                      <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-emerald-600">
+                        {step.icon}
+                      </span>
+                      <div>
+                        <p className="font-semibold text-zinc-900 text-sm">{step.label}</p>
+                        <p className="text-xs text-zinc-500 mt-0.5">{step.desc}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 pt-6 border-t border-slate-100">
+                  <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-4">
+                    {t("whatYouGet")}
+                  </p>
+                  <ul className="space-y-3">
+                    {[
+                      { icon: <FileText size={16} />, label: t("outcomeSummary") },
+                      { icon: <ListChecks size={16} />, label: t("outcomeClauses") },
+                      { icon: <AlertTriangle size={16} />, label: t("outcomeRisks") },
+                    ].map((item) => (
+                      <li key={item.label} className="flex items-center gap-3 text-sm text-zinc-700">
+                        <span className="text-emerald-600 shrink-0">{item.icon}</span>
+                        {item.label}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </aside>
           </div>
         </div>
 
