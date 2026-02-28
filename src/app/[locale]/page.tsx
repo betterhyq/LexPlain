@@ -9,6 +9,7 @@ import {
   Star, Users, Clock, AlertTriangle,
 } from "lucide-react";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
+import { Footer } from "@/components/Footer";
 import { RatingWidget } from "@/components/RatingWidget";
 
 export default function HomePage() {
@@ -288,6 +289,7 @@ export default function HomePage() {
           ))}
         </div>
       </main>
+      <Footer />
       <RatingWidget />
     </div>
   );

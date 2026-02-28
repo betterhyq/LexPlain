@@ -11,6 +11,7 @@ import { AnalysisResult } from "@/types";
 import { RiskCircle } from "@/components/RiskIndicators";
 import { ClauseCard } from "@/components/ClauseCard";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
+import { Footer } from "@/components/Footer";
 
 export default function ResultsPage() {
   const t = useTranslations("results");
@@ -76,7 +77,7 @@ export default function ResultsPage() {
   const handleExportPdf = () => window.print();
 
   return (
-    <div className="min-h-[100dvh] bg-[#fafafa] print:bg-white">
+    <div className="min-h-[100dvh] bg-[#fafafa] print:bg-white flex flex-col">
       <header className="print:hidden bg-white/95 backdrop-blur-sm border-b border-slate-200/80 px-6 py-4 sticky top-0 z-10 shadow-sm">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2.5">
@@ -105,7 +106,7 @@ export default function ResultsPage() {
         </div>
       </header>
 
-      <main className="max-w-3xl mx-auto px-4 py-8 space-y-5">
+      <main className="flex-1 max-w-3xl mx-auto px-4 py-8 space-y-5 w-full">
         <div className="bg-white rounded-[2.5rem] border border-slate-200/60 p-6 md:p-8 animate-fade-in shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)]">
           <div className="flex items-center gap-2 mb-4">
             <FileText size={16} className="text-emerald-600" />
@@ -238,6 +239,7 @@ export default function ResultsPage() {
           {t("legalDisclaimer")}
         </p>
       </main>
+      <Footer />
     </div>
   );
 }
