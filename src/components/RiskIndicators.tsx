@@ -57,8 +57,8 @@ export function RiskCircle({ risk }: { risk: Risk }) {
         </div>
       </div>
       <div>
-        <p className="text-2xl font-extrabold text-gray-900 tracking-tight">{label}</p>
-        <p className="text-sm text-gray-500 mt-1 leading-relaxed">{sub}</p>
+        <p className="text-2xl font-extrabold text-zinc-900 tracking-tight">{label}</p>
+        <p className="text-sm text-zinc-500 mt-1 leading-relaxed">{sub}</p>
       </div>
     </div>
   );

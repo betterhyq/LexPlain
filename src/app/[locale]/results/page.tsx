@@ -12,6 +12,7 @@ import { RiskCircle } from "@/components/RiskIndicators";
 import { ClauseCard } from "@/components/ClauseCard";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { Footer } from "@/components/Footer";
+import { RatingWidget } from "@/components/RatingWidget";
 
 export default function ResultsPage() {
   const t = useTranslations("results");
@@ -61,10 +62,16 @@ export default function ResultsPage() {
 
   if (!result) {
     return (
-      <div className="min-h-[100dvh] bg-[#fafafa] flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-10 h-10 border-2 border-slate-200 border-t-emerald-600 rounded-full animate-spin" />
-          <p className="text-sm text-zinc-500">{t("loadingReport")}</p>
+      <div className="min-h-[100dvh] bg-[#fafafa] flex flex-col relative overflow-hidden">
+        <div className="fixed inset-0 pointer-events-none" aria-hidden>
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-50/90 via-white to-zinc-50/80" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_40%,transparent_100%)] opacity-30" />
+        </div>
+        <div className="relative z-10 flex-1 flex items-center justify-center">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-10 h-10 border-2 border-slate-200 border-t-emerald-600 rounded-full animate-spin" />
+            <p className="text-sm text-zinc-500">{t("loadingReport")}</p>
+          </div>
         </div>
       </div>
     );
@@ -77,9 +84,13 @@ export default function ResultsPage() {
   const handleExportPdf = () => window.print();
 
   return (
-    <div className="min-h-[100dvh] bg-[#fafafa] print:bg-white flex flex-col">
-      <header className="print:hidden bg-white/95 backdrop-blur-sm border-b border-slate-200/80 px-6 py-4 sticky top-0 z-10 shadow-sm">
-        <div className="max-w-3xl mx-auto flex items-center justify-between">
+    <div className="min-h-[100dvh] bg-[#fafafa] print:bg-white flex flex-col relative overflow-hidden">
+      <div className="fixed inset-0 pointer-events-none print:hidden" aria-hidden>
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50/90 via-white to-zinc-50/80" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,#000_40%,transparent_100%)] opacity-30" />
+      </div>
+      <header className="print:hidden relative z-10 bg-white/95 backdrop-blur-sm border-b border-slate-200/80 px-6 py-4 sticky top-0 shadow-sm">
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 bg-emerald-600 rounded-xl flex items-center justify-center shadow-[0_4px_14px_-2px_rgba(5,150,105,0.25)]">
               <FileText size={18} className="text-white" />
@@ -87,6 +98,9 @@ export default function ResultsPage() {
             <span className="font-bold text-zinc-900 text-lg tracking-tight cursor-pointer" onClick={() => router.push("/")}>{tCommon("appName")}</span>
           </div>
           <div className="flex items-center gap-3">
+            <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-zinc-500">
+              {tCommon("freeNoLogin")}
+            </span>
             <LocaleSwitcher />
             <button
               type="button"
@@ -106,8 +120,9 @@ export default function ResultsPage() {
         </div>
       </header>
 
-      <main className="flex-1 max-w-3xl mx-auto px-4 py-8 space-y-5 w-full">
-        <div className="bg-white rounded-[2.5rem] border border-slate-200/60 p-6 md:p-8 animate-fade-in shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)]">
+      <main className="relative z-10 flex-1 w-full px-4 pt-10 pb-20">
+        <div className="max-w-3xl mx-auto space-y-5">
+        <div className="bg-white/95 backdrop-blur-sm rounded-[2.5rem] border border-slate-200/60 p-6 md:p-8 animate-fade-in shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] hover:shadow-[0_24px_48px_-16px_rgba(0,0,0,0.08)] transition-shadow duration-300">
           <div className="flex items-center gap-2 mb-4">
             <FileText size={16} className="text-emerald-600" />
             <span className="text-sm text-zinc-500 font-medium">{filename}</span>
@@ -134,7 +149,7 @@ export default function ResultsPage() {
         </div>
 
         {highRisk > 0 && (
-          <div className="bg-red-50/90 border border-red-200 rounded-[2.5rem] p-5 flex items-start gap-4 animate-fade-in animate-delay-100 shadow-sm">
+          <div className="bg-red-50/90 border border-red-200 rounded-[2.5rem] p-5 flex items-start gap-4 animate-fade-in animate-delay-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
             <div className="w-10 h-10 bg-red-100 rounded-xl flex items-center justify-center shrink-0">
               <AlertTriangle size={18} className="text-red-600" />
             </div>
@@ -149,7 +164,7 @@ export default function ResultsPage() {
           </div>
         )}
 
-        <div className="bg-white rounded-[2.5rem] border border-slate-200/60 p-6 md:p-8 animate-fade-in animate-delay-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)]">
+        <div className="bg-white/95 backdrop-blur-sm rounded-[2.5rem] border border-slate-200/60 p-6 md:p-8 animate-fade-in animate-delay-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] hover:shadow-[0_24px_48px_-16px_rgba(0,0,0,0.08)] transition-shadow duration-300">
           <h2 className="font-bold text-zinc-900 mb-4 flex items-center gap-2.5 text-base">
             <div className="w-8 h-8 bg-emerald-100 rounded-xl flex items-center justify-center">
               <CheckCircle size={16} className="text-emerald-600" />
@@ -160,7 +175,7 @@ export default function ResultsPage() {
         </div>
 
         {result.actions?.length > 0 && (
-          <div className="bg-amber-50/80 border border-amber-200/80 rounded-[2.5rem] p-6 md:p-8 animate-fade-in animate-delay-200 shadow-sm">
+          <div className="bg-amber-50/80 border border-amber-200/80 rounded-[2.5rem] p-6 md:p-8 animate-fade-in animate-delay-200 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
             <h2 className="font-bold text-zinc-900 mb-4 flex items-center gap-2.5 text-base">
               <div className="w-8 h-8 bg-amber-100 rounded-xl flex items-center justify-center">
                 <AlertTriangle size={16} className="text-amber-600" />
@@ -192,7 +207,7 @@ export default function ResultsPage() {
           </div>
         </div>
 
-        <div className="print:hidden bg-white rounded-[2.5rem] border border-slate-200/60 p-6 md:p-8 animate-fade-in animate-delay-400 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)]">
+        <div className="print:hidden bg-white/95 backdrop-blur-sm rounded-[2.5rem] border border-slate-200/60 p-6 md:p-8 animate-fade-in animate-delay-400 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.06)] hover:shadow-[0_24px_48px_-16px_rgba(0,0,0,0.08)] transition-shadow duration-300">
           <div className="flex items-center gap-2.5 mb-1">
             <div className="w-8 h-8 bg-emerald-100 rounded-xl flex items-center justify-center">
               <MessageSquare size={16} className="text-emerald-600" />
@@ -238,8 +253,10 @@ export default function ResultsPage() {
           <Shield size={10} />
           {t("legalDisclaimer")}
         </p>
+        </div>
       </main>
       <Footer />
+      <RatingWidget />
     </div>
   );
 }
