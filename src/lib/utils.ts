@@ -1,4 +1,5 @@
 import { clsx, type ClassValue } from "clsx";
+import OpenAI from "openai";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -55,28 +56,36 @@ export function parseJoyAIJson(content: string): unknown {
   }
 }
 
-export function JoyAIFetch(messages: { role: string; content: string }[], maxTokens = 2000) {
+export async function JoyAIFetch(
+  messages: { role: string; content: string }[],
+  maxTokens = 2000
+): Promise<Response> {
   const apiUrl = process.env.CHATRHINO_API_URL;
   const apiKey = process.env.CHATRHINO_API_KEY;
   if (!apiUrl || !apiKey) {
-    return Promise.resolve(
-      new Response(
-        JSON.stringify({ error: "JoyAI is not configured. Set CHATRHINO_API_URL and CHATRHINO_API_KEY." }),
-        { status: 503, headers: { "Content-Type": "application/json" } }
-      )
+    return new Response(
+      JSON.stringify({ error: "JoyAI is not configured. Set CHATRHINO_API_URL and CHATRHINO_API_KEY." }),
+      { status: 503, headers: { "Content-Type": "application/json" } }
     );
   }
-  return fetch(`${apiUrl}/chat/completions`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
+
+  try {
+    const client = new OpenAI({ baseURL: apiUrl, apiKey });
+    const completion = await client.chat.completions.create({
       model: process.env.CHATRHINO_MODEL || "JoyAI-chat",
-      messages,
+      messages: messages.map((m) => ({
+        role: m.role as "system" | "user" | "assistant",
+        content: m.content,
+      })),
       temperature: 0.2,
       max_tokens: maxTokens,
-    }),
-  });
+    });
+    return Response.json(completion);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    return new Response(JSON.stringify({ error: message }), {
+      status: 502,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
 }
