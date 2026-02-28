@@ -285,7 +285,7 @@ export default function HomePage() {
               <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-4">
                 {tCommon("howItWorks")}
               </p>
-              <ul className="space-y-0 divide-y divide-slate-100 rounded-xl border border-slate-200/50 bg-white p-6 md:p-8 shadow-[var(--shadow-glass)]">
+              <ul className="space-y-0 divide-y divide-slate-100 rounded-xl bg-white p-6 md:p-8 shadow-[var(--shadow-glass)]">
                 {STEPS.map((step) => (
                   <li key={step.label} className="flex gap-4 py-5 first:pt-0 last:pb-0">
                     <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-emerald-50 border border-emerald-200/50 flex items-center justify-center text-emerald-600 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.7)]">
