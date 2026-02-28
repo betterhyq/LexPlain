@@ -38,6 +38,7 @@
     "eslint": "9.39.3",
     "eslint-config-next": "16.1.6",
     "postcss": "8.5.6",
+    "radis": "2.0.0",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3"
   }

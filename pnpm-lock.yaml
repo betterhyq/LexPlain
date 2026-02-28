@@ -84,6 +84,9 @@ importers:
       postcss:
         specifier: 8.5.6
         version: 8.5.6
+      radis:
+        specifier: 2.0.0
+        version: 2.0.0
       tailwindcss:
         specifier: 4.2.1
         version: 4.2.1
@@ -2342,6 +2345,10 @@ packages:
 
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
+
+  radis@2.0.0:
+    resolution: {integrity: sha512-GOOtEO6u2jcuI/mQcatLQ1Ge79nHVMD3hRpdi2noi8Cj66XOzVbk73PWMKZMv5qEghg3Y7oRwx5stot7z+9gJA==}
+    engines: {node: '>=10.0.0'}
 
   rc9@2.1.2:
     resolution: {integrity: sha512-btXCnMmRIBINM2LDZoEmOogIZU7Qe7zn4BpomSKZ/ykbLObuBdvG+mFq11DL6fjH1DRwHhrlgtYWG96bJiC7Cg==}
@@ -5006,6 +5013,8 @@ snapshots:
   punycode@2.3.1: {}
 
   queue-microtask@1.2.3: {}
+
+  radis@2.0.0: {}
 
   rc9@2.1.2:
     dependencies:
