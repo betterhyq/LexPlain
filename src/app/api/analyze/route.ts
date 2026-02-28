@@ -1,8 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { recordAnalysis } from "@/lib/db";
 import {
-  getAnalyzeSystemPrompt,
   DeepSeekFetch,
+  getAnalyzeSystemPrompt,
   parseDeepSeekJson,
 } from "@/lib/utils";
 

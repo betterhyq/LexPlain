@@ -44,7 +44,8 @@
 pre-commit:
   parallel: true
   jobs:
-    - run: pnpm eslint {staged_files}
-      glob: "*.{js,ts,jsx,tsx}"
+    - run: pnpm lint
+      stage_fixed: true
 
-    - run: pnpm biome check --write --unsafe
+    - run: pnpm check
+      stage_fixed: true
