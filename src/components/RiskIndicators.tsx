@@ -21,7 +21,7 @@ export function RiskBadge({ risk }: { risk: Risk }) {
   };
   const riskKey = normalizeRisk(risk);
   const { label, cls } = config[riskKey];
-  return <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${cls}`}>{label}</span>;
+  return <span className={`text-xs font-semibold px-3 py-1 rounded-full ${cls}`}>{label}</span>;
 }
 
 export function RiskCircle({ risk }: { risk: Risk }) {
@@ -36,21 +36,29 @@ export function RiskCircle({ risk }: { risk: Risk }) {
   const r = 36, circ = 2 * Math.PI * r;
   const dash = (pct / 100) * circ;
   return (
-    <div className="flex items-center gap-4">
-      <div className="relative w-24 h-24">
-        <svg className="w-24 h-24 -rotate-90" viewBox="0 0 88 88">
-          <circle cx="44" cy="44" r={r} fill="none" stroke="#f1f5f9" strokeWidth="8" />
-          <circle cx="44" cy="44" r={r} fill="none" stroke={color} strokeWidth="8"
-            strokeDasharray={`${dash} ${circ}`} strokeLinecap="round"
-            style={{ transition: "stroke-dasharray 1s ease" }} />
+    <div className="flex items-center gap-5 animate-scale-in">
+      <div className="relative w-28 h-28 shrink-0">
+        <svg className="w-28 h-28 -rotate-90" viewBox="0 0 88 88">
+          <circle cx="44" cy="44" r={r} fill="none" stroke="#e2e8f0" strokeWidth="6" />
+          <circle
+            cx="44"
+            cy="44"
+            r={r}
+            fill="none"
+            stroke={color}
+            strokeWidth="6"
+            strokeDasharray={`${dash} ${circ}`}
+            strokeLinecap="round"
+            className="transition-[stroke-dasharray] duration-1000 ease-out"
+          />
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-lg font-extrabold" style={{ color }}>{pct}%</span>
+          <span className="text-xl font-extrabold tabular-nums" style={{ color }}>{pct}%</span>
         </div>
       </div>
       <div>
-        <p className="text-2xl font-extrabold text-gray-900">{label}</p>
-        <p className="text-sm text-gray-500 mt-0.5">{sub}</p>
+        <p className="text-2xl font-extrabold text-gray-900 tracking-tight">{label}</p>
+        <p className="text-sm text-gray-500 mt-1 leading-relaxed">{sub}</p>
       </div>
     </div>
   );

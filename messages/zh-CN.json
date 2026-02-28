@@ -1,11 +1,9 @@
 {
   "common": {
     "appName": "LexPlain",
-    "signIn": "登录",
-    "getStartedFree": "免费开始",
-    "howItWorks": "使用说明",
-    "pricing": "定价",
-    "forTeams": "团队版"
+    "tryNow": "立即使用",
+    "freeNoLogin": "完全免费 · 无需登录",
+    "howItWorks": "使用说明"
   },
   "home": {
     "badge": "由 JoyAI 驱动 · 即时结果",
@@ -33,7 +31,7 @@
     "pastePlaceholder": "在此粘贴您的合同或法律文本…\n\n我们将分析关键条款、风险，并为您提供通俗易懂的解读。",
     "analyzeDocument": "分析文档",
     "analyzing": "正在用 JoyAI 分析…",
-    "privacyNote": "传输加密 · 分析后不存储 · 每月 2 份免费",
+    "privacyNote": "完全免费 · 无需登录 · 传输加密 · 分析后不存储",
     "stepUpload": "上传文档",
     "stepUploadDesc": "PDF、Word 或粘贴文本",
     "stepAI": "AI 分析",
@@ -45,6 +43,7 @@
     "trustDisclaimer": "不能替代法律意见"
   },
   "results": {
+    "loadingReport": "加载报告中…",
     "exportPdf": "导出 PDF",
     "newDocument": "← 新建文档",
     "pages": "页",
@@ -61,10 +60,7 @@
     "askHint": "例如：「能否提前终止？」、「违约会怎样？」",
     "askPlaceholder": "输入您对此文档的任何问题…",
     "ask": "提问",
-    "proFeature": "Pro 功能",
-    "getPdfReport": "获取完整 PDF 报告",
-    "pdfReportDesc": "下载包含风险详情、谈判建议和条款注释的可分享报告。",
-    "upgradePro": "升级至 Pro — ¥19/月",
+    "exportHint": "随时打印或另存为 PDF，完全免费。",
     "legalDisclaimer": "LexPlain 并非律所，不提供法律意见。签署任何法律文件前请咨询专业律师。"
   },
   "risk": {
