@@ -1,4 +1,6 @@
-# LexPlain
+
+
+# LexPlain <img src="./public/logo.png" style="width: 20px; height: 20px;" />
 
 LexPlain is a web app that helps you understand legal documents in plain language. Upload a contract or paste text, and get an AI-powered summary, key clauses, and risk highlights—plus ask follow-up questions about your document.
 
