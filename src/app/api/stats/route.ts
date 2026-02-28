@@ -9,7 +9,7 @@ export async function GET() {
     console.error("[/api/stats]", err);
     return NextResponse.json(
       { error: "Failed to load stats" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

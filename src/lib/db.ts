@@ -1,8 +1,13 @@
+import fs from "node:fs";
+import path from "node:path";
 import initSqlJs from "sql.js";
-import fs from "fs";
-import path from "path";
 
-type SqlDb = { run: (sql: string, ...args: unknown[]) => void; exec: (sql: string) => { values: unknown[][] }[]; export: () => Uint8Array; close: () => void };
+type SqlDb = {
+  run: (sql: string, ...args: unknown[]) => void;
+  exec: (sql: string) => { values: unknown[][] }[];
+  export: () => Uint8Array;
+  close: () => void;
+};
 
 const DB_DIR = path.join(process.cwd(), "data");
 const DB_PATH = path.join(DB_DIR, "lexplain.db");
@@ -18,7 +23,8 @@ let SQL: Awaited<ReturnType<typeof initSqlJs>> | null = null;
 async function getSql() {
   if (SQL) return SQL;
   SQL = await initSqlJs({
-    locateFile: (file) => path.join(process.cwd(), "node_modules", "sql.js", "dist", file),
+    locateFile: (file) =>
+      path.join(process.cwd(), "node_modules", "sql.js", "dist", file),
   });
   return SQL;
 }
@@ -71,7 +77,9 @@ export async function getStats(): Promise<Stats> {
     ? (analysesRow[0].values[0][0] as number)
     : 0;
 
-  const ratingsRow = db.exec("SELECT COUNT(*) as c, COALESCE(AVG(score), 0) as avg FROM ratings");
+  const ratingsRow = db.exec(
+    "SELECT COUNT(*) as c, COALESCE(AVG(score), 0) as avg FROM ratings",
+  );
   let totalRatings = 0;
   let averageRating = 0;
   if (ratingsRow.length && ratingsRow[0].values[0]) {
@@ -79,8 +87,12 @@ export async function getStats(): Promise<Stats> {
     averageRating = Number((ratingsRow[0].values[0][1] as number).toFixed(1));
   }
 
-  const positiveRow = db.exec("SELECT COUNT(*) as c FROM ratings WHERE score >= 4");
-  const positiveCount = positiveRow.length ? (positiveRow[0].values[0][0] as number) : 0;
+  const positiveRow = db.exec(
+    "SELECT COUNT(*) as c FROM ratings WHERE score >= 4",
+  );
+  const positiveCount = positiveRow.length
+    ? (positiveRow[0].values[0][0] as number)
+    : 0;
 
   db.close();
   return { totalAnalyses, totalRatings, averageRating, positiveCount };

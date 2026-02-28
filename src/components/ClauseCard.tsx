@@ -1,20 +1,39 @@
 "use client";
 
-import { useState, memo } from "react";
-import { ChevronDown, ChevronUp, CheckCircle, AlertTriangle, ArrowRight } from "lucide-react";
-import { Clause, Risk } from "@/types";
+import {
+  AlertTriangle,
+  ArrowRight,
+  CheckCircle,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
+import { memo, useState } from "react";
+import type { Clause, Risk } from "@/types";
 import { RiskBadge } from "./RiskIndicators";
 
 function ClauseCardInner({ clause, index }: { clause: Clause; index: number }) {
   const [open, setOpen] = useState(false);
   const risk = clause.risk as Risk;
 
-  const borderColor = { low: "border-l-emerald-400", medium: "border-l-amber-400", high: "border-l-red-400" }[risk];
-  const bgColor     = { low: "bg-white", medium: "bg-amber-50/40", high: "bg-red-50/40" }[risk];
+  const borderColor = {
+    low: "border-l-emerald-400",
+    medium: "border-l-amber-400",
+    high: "border-l-red-400",
+  }[risk];
+  const bgColor = {
+    low: "bg-white",
+    medium: "bg-amber-50/40",
+    high: "bg-red-50/40",
+  }[risk];
   const icon =
-    risk === "low"
-      ? <CheckCircle size={15} className="text-emerald-500 shrink-0 mt-0.5" />
-      : <AlertTriangle size={15} className={`shrink-0 mt-0.5 ${risk === "high" ? "text-red-500" : "text-amber-500"}`} />;
+    risk === "low" ? (
+      <CheckCircle size={15} className="text-emerald-500 shrink-0 mt-0.5" />
+    ) : (
+      <AlertTriangle
+        size={15}
+        className={`shrink-0 mt-0.5 ${risk === "high" ? "text-red-500" : "text-amber-500"}`}
+      />
+    );
 
   return (
     <div
@@ -29,15 +48,21 @@ function ClauseCardInner({ clause, index }: { clause: Clause; index: number }) {
         <div className="flex items-start gap-3 flex-1 min-w-0">
           {icon}
           <div className="flex-1 min-w-0">
-            <p className="font-semibold text-zinc-900 text-sm md:text-base">{clause.title}</p>
-            <p className="text-zinc-500 text-sm mt-0.5 leading-snug">{clause.summary}</p>
+            <p className="font-semibold text-zinc-900 text-sm md:text-base">
+              {clause.title}
+            </p>
+            <p className="text-zinc-500 text-sm mt-0.5 leading-snug">
+              {clause.summary}
+            </p>
           </div>
         </div>
         <div className="flex items-center gap-2 shrink-0">
           <RiskBadge risk={risk} />
-          {open
-            ? <ChevronUp size={18} className="text-zinc-400" />
-            : <ChevronDown size={18} className="text-zinc-400" />}
+          {open ? (
+            <ChevronUp size={18} className="text-zinc-400" />
+          ) : (
+            <ChevronDown size={18} className="text-zinc-400" />
+          )}
         </div>
       </button>
 
@@ -48,8 +73,13 @@ function ClauseCardInner({ clause, index }: { clause: Clause; index: number }) {
           </div>
           {clause.action && (
             <div className="flex items-start gap-2 bg-emerald-50 border border-emerald-100 rounded-lg p-4">
-              <ArrowRight size={16} className="text-emerald-600 shrink-0 mt-0.5" />
-              <p className="text-sm text-emerald-800 font-medium">{clause.action}</p>
+              <ArrowRight
+                size={16}
+                className="text-emerald-600 shrink-0 mt-0.5"
+              />
+              <p className="text-sm text-emerald-800 font-medium">
+                {clause.action}
+              </p>
             </div>
           )}
         </div>

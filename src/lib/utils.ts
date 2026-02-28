@@ -1,4 +1,4 @@
-import { clsx, type ClassValue } from "clsx";
+import { type ClassValue, clsx } from "clsx";
 import OpenAI from "openai";
 import { twMerge } from "tailwind-merge";
 
@@ -58,14 +58,16 @@ export function parseJoyAIJson(content: string): unknown {
 
 export async function JoyAIFetch(
   messages: { role: string; content: string }[],
-  maxTokens = 2000
+  maxTokens = 2000,
 ): Promise<Response> {
   const apiUrl = process.env.LLM_API_URL;
   const apiKey = process.env.LLM_API_KEY;
   if (!apiUrl || !apiKey) {
     return new Response(
-      JSON.stringify({ error: "JoyAI is not configured. Set LLM_API_URL and LLM_API_KEY." }),
-      { status: 503, headers: { "Content-Type": "application/json" } }
+      JSON.stringify({
+        error: "JoyAI is not configured. Set LLM_API_URL and LLM_API_KEY.",
+      }),
+      { status: 503, headers: { "Content-Type": "application/json" } },
     );
   }
 

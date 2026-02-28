@@ -1,9 +1,9 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
 import { LocaleScript } from "@/components/LocaleScript";
-import type { Metadata } from "next";
+import { routing } from "@/i18n/routing";
 
 type Props = {
   children: React.ReactNode;

@@ -55,7 +55,7 @@ export function HeroTypewriter({
       typedRef.current?.destroy();
       typedRef.current = null;
     };
-  }, [text, typeSpeed, startDelay, extraStrings.length]);
+  }, [text, typeSpeed, startDelay, extraStrings.length, extraStrings]);
 
   return <span ref={spanRef} className={className} aria-live="polite" />;
 }

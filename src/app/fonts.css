@@ -1,90 +1,89 @@
 @font-face {
-    font-family: "JINGDONGLangZhengTi1-Light";
-    src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/1-18030-2022level2/JINGDONGLangZhengTi1-Light.ttf")
-      format("truetype");
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: "JINGDONGLangZhengTi1-Semilight";
-    src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/1-18030-2022level2/JINGDONGLangZhengTi1-Semilight.ttf")
-      format("truetype");
-    font-weight: 350;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: "JINGDONGLangZhengTi1-Regular";
-    src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/1-18030-2022level2/JINGDONGLangZhengTi1-Regular.ttf")
-      format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: "JINGDONGLangZhengTi1-Semibold";
-    src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/1-18030-2022level2/JINGDONGLangZhengTi1-Semibold.ttf")
-      format("truetype");
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: "JINGDONGLangZhengTi1-Bold";
-    src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/1-18030-2022level2/JINGDONGLangZhengTi1-Bold.ttf")
-      format("truetype");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: "JINGDONGLangZhengTi2-Light";
-    src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/2-18030-2022level2/JINGDONGLangZhengTi2-Light.ttf")
-      format("truetype");
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: "JINGDONGLangZhengTi2-Semilight";
-    src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/2-18030-2022level2/JINGDONGLangZhengTi2-Semilight.ttf")
-      format("truetype");
-    font-weight: 350;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: "JINGDONGLangZhengTi2-Regular";
-    src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/2-18030-2022level2/JINGDONGLangZhengTi2-Regular.ttf")
-      format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: "JINGDONGLangZhengTi2-Semibold";
-    src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/2-18030-2022level2/JINGDONGLangZhengTi2-Semibold.ttf")
-      format("truetype");
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: "JINGDONGLangZhengTi2-Bold";
-    src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/2-18030-2022level2/JINGDONGLangZhengTi2-Bold.ttf")
-      format("truetype");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  
+  font-family: "JINGDONGLangZhengTi1-Light";
+  src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/1-18030-2022level2/JINGDONGLangZhengTi1-Light.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JINGDONGLangZhengTi1-Semilight";
+  src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/1-18030-2022level2/JINGDONGLangZhengTi1-Semilight.ttf")
+    format("truetype");
+  font-weight: 350;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JINGDONGLangZhengTi1-Regular";
+  src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/1-18030-2022level2/JINGDONGLangZhengTi1-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JINGDONGLangZhengTi1-Semibold";
+  src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/1-18030-2022level2/JINGDONGLangZhengTi1-Semibold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JINGDONGLangZhengTi1-Bold";
+  src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/1-18030-2022level2/JINGDONGLangZhengTi1-Bold.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JINGDONGLangZhengTi2-Light";
+  src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/2-18030-2022level2/JINGDONGLangZhengTi2-Light.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JINGDONGLangZhengTi2-Semilight";
+  src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/2-18030-2022level2/JINGDONGLangZhengTi2-Semilight.ttf")
+    format("truetype");
+  font-weight: 350;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JINGDONGLangZhengTi2-Regular";
+  src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/2-18030-2022level2/JINGDONGLangZhengTi2-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JINGDONGLangZhengTi2-Semibold";
+  src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/2-18030-2022level2/JINGDONGLangZhengTi2-Semibold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JINGDONGLangZhengTi2-Bold";
+  src: url("https://storage.360buyimg.com/yy-pro/JINGDONGLangZhengTi/2-18030-2022level2/JINGDONGLangZhengTi2-Bold.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
