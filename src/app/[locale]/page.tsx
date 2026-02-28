@@ -140,7 +140,7 @@ export default function HomePage() {
                 {t("badge")}
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-900 leading-[1.15] mb-5 tracking-tight max-w-[28ch]">
-                {t("heroTitle")}<br />
+                {t("heroTitle")}
                 <span className="hero-accent">{t("heroHighlight")}</span>
               </h1>
               <p className="text-zinc-600 text-lg md:text-xl leading-relaxed max-w-[42ch]">
