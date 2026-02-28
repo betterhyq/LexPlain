@@ -8,7 +8,7 @@
     "forTeams": "团队版"
   },
   "home": {
-    "badge": "由 DeepSeek 驱动 · 即时结果",
+    "badge": "由 JoyAI 驱动 · 即时结果",
     "heroTitle": "法律文件，",
     "heroHighlight": "终于说人话了",
     "heroSubtitle": "上传任意合同、保密协议、租约或协议。即刻获取摘要、条款解析和风险提示——无需律师。",
@@ -32,16 +32,16 @@
     },
     "pastePlaceholder": "在此粘贴您的合同或法律文本…\n\n我们将分析关键条款、风险，并为您提供通俗易懂的解读。",
     "analyzeDocument": "分析文档",
-    "analyzing": "正在用 DeepSeek 分析…",
+    "analyzing": "正在用 JoyAI 分析…",
     "privacyNote": "传输加密 · 分析后不存储 · 每月 2 份免费",
     "stepUpload": "上传文档",
     "stepUploadDesc": "PDF、Word 或粘贴文本",
     "stepAI": "AI 分析",
-    "stepAIDesc": "DeepSeek 逐条解析",
+    "stepAIDesc": "JoyAI 逐条解析",
     "stepResult": "通俗解读",
     "stepResultDesc": "风险摘要与行动建议",
     "trustAPI": "API 密钥仅存服务端",
-    "trustDeepSeek": "DeepSeek 驱动",
+    "trustJoyAI": "JoyAI 驱动",
     "trustDisclaimer": "不能替代法律意见"
   },
   "results": {

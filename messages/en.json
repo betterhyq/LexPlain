@@ -8,7 +8,7 @@
     "forTeams": "For Teams"
   },
   "home": {
-    "badge": "Powered by DeepSeek · Instant results",
+    "badge": "Powered by JoyAI · Instant results",
     "heroTitle": "Legal documents,",
     "heroHighlight": "finally in plain English",
     "heroSubtitle": "Upload any contract, NDA, lease, or agreement. Get an instant summary, clause breakdown, and risk flags — without a lawyer.",
@@ -32,16 +32,16 @@
     },
     "pastePlaceholder": "Paste your contract or legal text here…\n\nWe'll analyze it for key clauses, risks, and give you a plain-English breakdown.",
     "analyzeDocument": "Analyze Document",
-    "analyzing": "Analyzing with DeepSeek…",
+    "analyzing": "Analyzing with JoyAI…",
     "privacyNote": "Encrypted in transit · Never stored after analysis · 2 free docs/month",
     "stepUpload": "Upload document",
     "stepUploadDesc": "PDF, Word, or paste text",
     "stepAI": "AI analysis",
-    "stepAIDesc": "DeepSeek reads every clause",
+    "stepAIDesc": "JoyAI reads every clause",
     "stepResult": "Plain English",
     "stepResultDesc": "Risk summary & actions",
     "trustAPI": "API key stays server-side",
-    "trustDeepSeek": "DeepSeek powered",
+    "trustJoyAI": "JoyAI powered",
     "trustDisclaimer": "Not a substitute for legal advice"
   },
   "results": {

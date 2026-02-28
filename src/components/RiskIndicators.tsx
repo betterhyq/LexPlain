@@ -3,6 +3,15 @@
 import { useTranslations } from "next-intl";
 import { Risk } from "@/types";
 
+const VALID_RISKS: Risk[] = ["low", "medium", "high"];
+
+function normalizeRisk(risk: unknown): Risk {
+  if (typeof risk === "string" && VALID_RISKS.includes(risk as Risk)) {
+    return risk as Risk;
+  }
+  return "medium";
+}
+
 export function RiskBadge({ risk }: { risk: Risk }) {
   const t = useTranslations("risk");
   const config = {
@@ -10,7 +19,8 @@ export function RiskBadge({ risk }: { risk: Risk }) {
     medium: { label: t("mediumRiskFull"), cls: "bg-amber-100 text-amber-700 border border-amber-200" },
     high:   { label: t("highRiskFull"),  cls: "bg-red-100 text-red-700 border border-red-200" },
   };
-  const { label, cls } = config[risk];
+  const riskKey = normalizeRisk(risk);
+  const { label, cls } = config[riskKey];
   return <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${cls}`}>{label}</span>;
 }
 
@@ -21,7 +31,8 @@ export function RiskCircle({ risk }: { risk: Risk }) {
     medium: { pct: 60, color: "#f59e0b", label: t("mediumRiskFull"), sub: t("mediumSub") },
     high:   { pct: 90, color: "#ef4444", label: t("highRiskFull"),   sub: t("highSub") },
   };
-  const { pct, color, label, sub } = map[risk];
+  const riskKey = normalizeRisk(risk);
+  const { pct, color, label, sub } = map[riskKey];
   const r = 36, circ = 2 * Math.PI * r;
   const dash = (pct / 100) * circ;
   return (

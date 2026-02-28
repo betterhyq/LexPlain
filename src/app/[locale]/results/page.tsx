@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import {
   FileText, AlertTriangle, CheckCircle, Shield, ArrowRight,
   Download, MessageSquare, Sparkles, Scale,
@@ -17,6 +17,7 @@ export default function ResultsPage() {
   const tCommon = useTranslations("common");
   const tErrors = useTranslations("errors");
   const router = useRouter();
+  const locale = useLocale();
 
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [filename, setFilename] = useState("Your document");
@@ -45,6 +46,7 @@ export default function ResultsPage() {
           title: result.title,
           summary: result.summary,
           clauses: result.clauses,
+          locale,
         }),
       });
       const data = await res.json();

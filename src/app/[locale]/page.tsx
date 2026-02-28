@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { useRouter } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import {
   Upload, FileText, Shield, Zap, Lock, ArrowRight, X, Sparkles,
   TrendingUp, Scale, Home, Briefcase, FileSignature, CheckCircle,
@@ -15,6 +15,7 @@ export default function HomePage() {
   const tCommon = useTranslations("common");
   const tErrors = useTranslations("errors");
   const router = useRouter();
+  const locale = useLocale();
 
   const DOC_TYPES = [
     { icon: <FileSignature size={16} />, labelKey: "nda" as const },
@@ -76,7 +77,7 @@ export default function HomePage() {
       const res = await fetch("/api/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text }),
+        body: JSON.stringify({ text, locale }),
       });
 
       const data = await res.json();
@@ -257,7 +258,7 @@ export default function HomePage() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-6 animate-fade-in animate-delay-400">
           {[
             { icon: <Shield size={13} />, text: t("trustAPI") },
-            { icon: <Zap size={13} />, text: t("trustDeepSeek") },
+            { icon: <Zap size={13} />, text: t("trustJoyAI") },
             { icon: <Scale size={13} />, text: t("trustDisclaimer") },
           ].map((b) => (
             <div key={b.text} className="flex items-center gap-1.5 text-xs text-gray-400">
