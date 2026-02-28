@@ -154,12 +154,13 @@ export default function HomePage() {
             <div className="w-9 h-9 bg-emerald-600 rounded-lg flex items-center justify-center shadow-[0_4px_14px_-2px_rgba(5,150,105,0.22)] ring-1 ring-black/5">
               <FileText size={18} className="text-white" strokeWidth={2} />
             </div>
-            <span
-              className="font-bold text-zinc-900 text-lg tracking-tight cursor-pointer select-none"
+            <button
+              type="button"
+              className="font-bold text-zinc-900 text-lg tracking-tight cursor-pointer select-none bg-transparent border-none p-0"
               onClick={() => router.push("/")}
             >
               {tCommon("appName")}
-            </span>
+            </button>
           </div>
           <div className="flex items-center gap-3">
             <LocaleSwitcher />

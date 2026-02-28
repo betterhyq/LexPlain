@@ -67,7 +67,12 @@ export function RiskCircle({ risk }: { risk: Risk }) {
   return (
     <div className="flex items-center gap-5 animate-scale-in">
       <div className="relative w-28 h-28 shrink-0">
-        <svg className="w-28 h-28 -rotate-90" viewBox="0 0 88 88">
+        <svg
+          className="w-28 h-28 -rotate-90"
+          viewBox="0 0 88 88"
+          role="img"
+          aria-label={`Risk score: ${pct}%`}
+        >
           <circle
             cx="44"
             cy="44"

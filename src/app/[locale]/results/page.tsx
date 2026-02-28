@@ -106,12 +106,13 @@ export default function ResultsPage() {
             <div className="w-9 h-9 bg-emerald-600 rounded-lg flex items-center justify-center shadow-[0_4px_14px_-2px_rgba(5,150,105,0.25)]">
               <FileText size={18} className="text-white" />
             </div>
-            <span
-              className="font-bold text-zinc-900 text-lg tracking-tight cursor-pointer"
+            <button
+              type="button"
+              className="font-bold text-zinc-900 text-lg tracking-tight cursor-pointer bg-transparent border-none p-0"
               onClick={() => router.push("/")}
             >
               {tCommon("appName")}
-            </span>
+            </button>
           </div>
           <div className="flex items-center gap-3">
             <LocaleSwitcher />
@@ -223,7 +224,7 @@ export default function ResultsPage() {
               <ul className="space-y-3">
                 {result.actions.map((action, i) => (
                   <li
-                    key={i}
+                    key={`${String(action).slice(0, 50)}-${i}`}
                     className="flex items-start gap-3 text-sm text-zinc-700"
                   >
                     <span className="w-6 h-6 rounded-full bg-amber-200 text-amber-800 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
