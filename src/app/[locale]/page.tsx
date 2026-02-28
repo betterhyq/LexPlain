@@ -119,7 +119,7 @@ export default function HomePage() {
             <div className="w-9 h-9 bg-gradient-to-br from-indigo-600 to-indigo-700 rounded-xl flex items-center justify-center shadow-md shadow-indigo-200/50">
               <FileText size={18} className="text-white" />
             </div>
-            <span className="font-bold text-gray-900 text-lg tracking-tight">{tCommon("appName")}</span>
+            <span className="font-bold text-gray-900 text-lg tracking-tight cursor-pointer" onClick={() => router.push("/")}>{tCommon("appName")}</span>
           </div>
           <div className="flex items-center gap-3">
             <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-gray-500">
