@@ -141,7 +141,7 @@ export default function HomePage() {
                 {t("heroTitle")}
                 <HeroTypewriter
                   text={t("heroHighlight")}
-                  typeSpeed={48}
+                  typeSpeed={120}
                   startDelay={320}
                   className="hero-accent"
                 />
