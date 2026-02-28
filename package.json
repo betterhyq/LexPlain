@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "release": "changelogen --clean --release"
+    "release": "changelogen --clean --release --push"
   },
   "dependencies": {
     "clsx": "2.1.1",
