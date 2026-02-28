@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.3
+
+[compare changes](https://github.com/betterhyq/LexPlain/compare/v0.0.2...v0.0.3)
+
+### 🏡 Chore
+
+- Update release script to include push option ([31b3fce](https://github.com/betterhyq/LexPlain/commit/31b3fce))
+
+### ❤️ Contributors
+
+- Heyongqi10 <heyongqi10@jd.com>
+
 ## v0.0.2
 
 
