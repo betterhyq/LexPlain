@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { recordAnalysis } from "@/lib/db";
+import { checkAndConsumeAiRateLimit, getClientIp } from "@/lib/ratelimit";
 import {
   DeepSeekFetch,
   getAnalyzeSystemPrompt,
@@ -11,6 +12,27 @@ const MAX_TEXT_LENGTH = 12000;
 
 export async function POST(req: NextRequest) {
   try {
+    const ip = getClientIp(req);
+    const rate = await checkAndConsumeAiRateLimit(ip);
+    if (!rate.allowed) {
+      return NextResponse.json(
+        {
+          error: "RATE_LIMITED",
+          retryAfter: rate.retryAfter,
+          message: "Too many requests. Please try again later.",
+        },
+        {
+          status: 429,
+          headers: {
+            "Content-Type": "application/json",
+            ...(rate.retryAfter != null && rate.retryAfter > 0
+              ? { "Retry-After": String(rate.retryAfter) }
+              : {}),
+          },
+        },
+      );
+    }
+
     let body: unknown;
     try {
       body = await req.json();

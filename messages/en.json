@@ -86,7 +86,9 @@
   },
   "errors": {
     "generic": "Something went wrong. Please try again.",
-    "noAnswer": "Could not get an answer."
+    "noAnswer": "Could not get an answer.",
+    "rateLimited": "Too many requests. Please try again in a moment.",
+    "rateLimitedRetry": "Too many requests. Please try again in {seconds} seconds."
   },
   "metadata": {
     "title": "LexPlain — Legal Documents in Plain English",

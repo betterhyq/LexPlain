@@ -129,7 +129,15 @@ export default function HomePage() {
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Analysis failed");
+      if (!res.ok) {
+        const message =
+          res.status === 429 && data.error === "RATE_LIMITED"
+            ? data.retryAfter
+              ? tErrors("rateLimitedRetry", { seconds: data.retryAfter })
+              : tErrors("rateLimited")
+            : data.error || "Analysis failed";
+        throw new Error(message);
+      }
 
       sessionStorage.setItem("lexplain_result", JSON.stringify(data));
       sessionStorage.setItem("lexplain_filename", filename);

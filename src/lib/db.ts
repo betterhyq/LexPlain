@@ -5,7 +5,7 @@ const REDIS_URL = process.env.REDIS_URL;
 type RedisClient = ReturnType<typeof createClient>;
 let client: RedisClient | null = null;
 
-async function getClient(): Promise<RedisClient> {
+export async function getRedisClient(): Promise<RedisClient> {
   if (!REDIS_URL) {
     throw new Error("REDIS_URL is not set");
   }
@@ -41,7 +41,7 @@ function parseNum(val: string | null): number {
 }
 
 export async function getStats(): Promise<Stats> {
-  const redis = await getClient();
+  const redis = await getRedisClient();
   const [analyses, count, sum, positive] = await redis.mGet([
     KEY_ANALYSES,
     KEY_RATINGS_COUNT,
@@ -63,13 +63,13 @@ export async function getStats(): Promise<Stats> {
 }
 
 export async function recordAnalysis(): Promise<void> {
-  const redis = await getClient();
+  const redis = await getRedisClient();
   await redis.incr(KEY_ANALYSES);
 }
 
 export async function recordRating(score: number): Promise<void> {
   if (score < 1 || score > 5) return;
-  const redis = await getClient();
+  const redis = await getRedisClient();
   const multi = redis
     .multi()
     .incr(KEY_RATINGS_COUNT)

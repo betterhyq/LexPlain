@@ -60,7 +60,17 @@ export default function ResultsPage() {
         }),
       });
       const data = await res.json();
-      setAnswer(data.answer || data.error || tErrors("noAnswer"));
+      if (!res.ok) {
+        const msg =
+          res.status === 429 && data.error === "RATE_LIMITED"
+            ? data.retryAfter
+              ? tErrors("rateLimitedRetry", { seconds: data.retryAfter })
+              : tErrors("rateLimited")
+            : data.error || tErrors("noAnswer");
+        setAnswer(msg);
+      } else {
+        setAnswer(data.answer || tErrors("noAnswer"));
+      }
     } catch {
       setAnswer(tErrors("generic"));
     } finally {
