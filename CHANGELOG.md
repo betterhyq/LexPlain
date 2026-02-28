@@ -1,6 +1,34 @@
 # Changelog
 
 
+## v0.0.7
+
+[compare changes](https://github.com/betterhyq/LexPlain/compare/v0.0.6...v0.0.7)
+
+### 🚀 Enhancements
+
+- Implement rate limiting for AI requests ([7613b45](https://github.com/betterhyq/LexPlain/commit/7613b45))
+
+### 📖 Documentation
+
+- Update architecture and README to include rate limiting details ([d579217](https://github.com/betterhyq/LexPlain/commit/d579217))
+- Remove license section from README.md ([6c7a7c0](https://github.com/betterhyq/LexPlain/commit/6c7a7c0))
+
+### 🏡 Chore
+
+- Remove Vercel Lint workflow file ([7a22098](https://github.com/betterhyq/LexPlain/commit/7a22098))
+- Update AI integration from JoyAI to DeepSeek ([f0337e5](https://github.com/betterhyq/LexPlain/commit/f0337e5))
+- Update .env.example with placeholder values ([83f781f](https://github.com/betterhyq/LexPlain/commit/83f781f))
+- Update enhanced-resolve to version 5.20.0 and add ignored built dependencies ([aa83dcf](https://github.com/betterhyq/LexPlain/commit/aa83dcf))
+- Add lefthook configuration and dependencies ([54ac4dd](https://github.com/betterhyq/LexPlain/commit/54ac4dd))
+- Enhance lefthook configuration for pre-commit checks ([5a05a6f](https://github.com/betterhyq/LexPlain/commit/5a05a6f))
+- Reorder import statements in analyze route ([4ac7111](https://github.com/betterhyq/LexPlain/commit/4ac7111))
+- Specify package manager in package.json ([3976435](https://github.com/betterhyq/LexPlain/commit/3976435))
+
+### ❤️ Contributors
+
+- Heyongqi10 <heyongqi10@jd.com>
+
 ## v0.0.6
 
 [compare changes](https://github.com/betterhyq/LexPlain/compare/v0.0.5...v0.0.6)
