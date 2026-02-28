@@ -10,9 +10,9 @@
     "heroTitle": "法律文件，",
     "heroHighlight": "终于说人话了",
     "heroSubtitle": "上传任意合同、保密协议、租约或协议。即刻获取摘要、条款解析和风险提示——无需律师。",
-    "statsDocs": "已分析 12,400+ 份文档",
+    "statsDocs": "已分析 {count}+ 份文档",
     "statsTime": "60 秒内出结果",
-    "statsRating": "800+ 用户好评 4.9 / 5",
+    "statsRating": "{count}+ 用户好评 {rating} / 5",
     "tabFile": "📎  上传文件",
     "tabText": "✏️  粘贴文本",
     "dropHere": "松手即可！",
@@ -40,7 +40,10 @@
     "stepResultDesc": "风险摘要与行动建议",
     "trustAPI": "API 密钥仅存服务端",
     "trustJoyAI": "JoyAI 驱动",
-    "trustDisclaimer": "不能替代法律意见"
+    "trustDisclaimer": "不能替代法律意见",
+    "ratingTitle": "为 LexPlain 评分",
+    "ratingThanks": "感谢您的反馈！",
+    "ratingSubmit": "提交"
   },
   "results": {
     "loadingReport": "加载报告中…",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import {
@@ -9,6 +9,7 @@ import {
   Star, Users, Clock, AlertTriangle,
 } from "lucide-react";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
+import { RatingWidget } from "@/components/RatingWidget";
 
 export default function HomePage() {
   const t = useTranslations("home");
@@ -37,6 +38,18 @@ export default function HomePage() {
   const [inputMode, setInputMode] = useState<"file" | "text">("file");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [stats, setStats] = useState<{ totalAnalyses: number; totalRatings: number; averageRating: number; positiveCount: number } | null>(null);
+
+  useEffect(() => {
+    fetch("/api/stats")
+      .then((res) => res.ok ? res.json() : null)
+      .then((data) => data && setStats(data))
+      .catch(() => {});
+  }, []);
+
+  const totalAnalyses = stats?.totalAnalyses ?? 12400;
+  const ratingCount = stats?.totalRatings ?? 800;
+  const averageRating = stats?.averageRating ?? 4.9;
 
   const canAnalyze =
     (inputMode === "file" && !!file) ||
@@ -134,9 +147,9 @@ export default function HomePage() {
 
         <div className="flex items-center gap-8 mb-10 animate-fade-in animate-delay-100">
           {[
-            { icon: <Users size={14} />, text: t("statsDocs") },
+            { icon: <Users size={14} />, text: t("statsDocs", { count: totalAnalyses.toLocaleString() }) },
             { icon: <Clock size={14} />, text: t("statsTime") },
-            { icon: <Star size={14} />, text: t("statsRating") },
+            { icon: <Star size={14} />, text: t("statsRating", { count: ratingCount.toLocaleString(), rating: averageRating }) },
           ].map((s) => (
             <div key={s.text} className="hidden sm:flex items-center gap-2 text-sm text-gray-500">
               <span className="text-indigo-500">{s.icon}</span>
@@ -285,6 +298,7 @@ export default function HomePage() {
           ))}
         </div>
       </main>
+      <RatingWidget />
     </div>
   );
 }

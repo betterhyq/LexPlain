@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAnalyzeSystemPrompt, parseJoyAIJson, JoyAIFetch } from "@/lib/utils";
+import { recordAnalysis } from "@/lib/db";
 
 export async function POST(req: NextRequest) {
   try {
@@ -28,6 +29,7 @@ export async function POST(req: NextRequest) {
     }
 
     const result = parseJoyAIJson(content);
+    await recordAnalysis().catch(() => {});
     return NextResponse.json(result);
   } catch (err) {
     console.error("[/api/analyze]", err);

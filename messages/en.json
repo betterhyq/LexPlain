@@ -10,9 +10,9 @@
     "heroTitle": "Legal documents,",
     "heroHighlight": "finally in plain English",
     "heroSubtitle": "Upload any contract, NDA, lease, or agreement. Get an instant summary, clause breakdown, and risk flags — without a lawyer.",
-    "statsDocs": "12,400+ documents analyzed",
+    "statsDocs": "{count}+ documents analyzed",
     "statsTime": "Results in under 60 seconds",
-    "statsRating": "4.9 / 5 from 800+ users",
+    "statsRating": "{rating} / 5 from {count}+ users",
     "tabFile": "📎  Upload file",
     "tabText": "✏️  Paste text",
     "dropHere": "Drop it here!",
@@ -40,7 +40,10 @@
     "stepResultDesc": "Risk summary & actions",
     "trustAPI": "API key stays server-side",
     "trustJoyAI": "JoyAI powered",
-    "trustDisclaimer": "Not a substitute for legal advice"
+    "trustDisclaimer": "Not a substitute for legal advice",
+    "ratingTitle": "Rate LexPlain",
+    "ratingThanks": "Thanks for your feedback!",
+    "ratingSubmit": "Submit"
   },
   "results": {
     "loadingReport": "Loading report…",
