@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "@jd/joyrepo-fonts/install.css";
 import "./globals.css";
+import "./fonts.css";
 
 export const metadata: Metadata = {
   title: "LexPlain — Legal Documents in Plain English",
