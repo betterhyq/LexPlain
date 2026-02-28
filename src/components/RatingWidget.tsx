@@ -29,8 +29,8 @@ export function RatingWidget() {
 
   if (submitted) {
     return (
-      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-2xl border border-indigo-200/80 bg-white/95 px-4 py-3 shadow-lg backdrop-blur-sm">
-        <span className="text-sm font-medium text-indigo-700">{t("ratingThanks")}</span>
+      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-2xl border border-emerald-200/80 bg-white/95 px-4 py-3 shadow-lg backdrop-blur-sm">
+        <span className="text-sm font-medium text-emerald-700">{t("ratingThanks")}</span>
       </div>
     );
   }
@@ -40,23 +40,23 @@ export function RatingWidget() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-2xl border border-indigo-200/80 bg-white/95 px-4 py-3 shadow-lg backdrop-blur-sm hover:border-indigo-300 hover:shadow-indigo-100 transition-all"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-2xl border border-slate-200/80 bg-white/95 px-4 py-3 shadow-lg backdrop-blur-sm hover:border-emerald-300 hover:shadow-emerald-100/50 transition-all active:scale-[0.98]"
         aria-label={t("ratingTitle")}
       >
         <Star size={18} className="text-amber-500 fill-amber-500" />
-        <span className="text-sm font-semibold text-gray-700">{t("ratingTitle")}</span>
+        <span className="text-sm font-semibold text-zinc-700">{t("ratingTitle")}</span>
       </button>
     );
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 rounded-2xl border border-indigo-200/80 bg-white/95 p-4 shadow-lg backdrop-blur-sm">
+    <div className="fixed bottom-6 right-6 z-50 rounded-2xl border border-slate-200/80 bg-white/95 p-4 shadow-lg backdrop-blur-sm">
       <div className="flex items-center justify-between mb-2">
-        <span className="text-sm font-semibold text-gray-800">{t("ratingTitle")}</span>
+        <span className="text-sm font-semibold text-zinc-800">{t("ratingTitle")}</span>
         <button
           type="button"
           onClick={() => setOpen(false)}
-          className="p-1 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100"
+          className="p-1 text-zinc-400 hover:text-zinc-600 rounded-lg hover:bg-slate-100 active:scale-[0.98]"
           aria-label="Close"
         >
           <X size={16} />
@@ -70,14 +70,14 @@ export function RatingWidget() {
             onMouseEnter={() => setHover(star)}
             onMouseLeave={() => setHover(0)}
             onClick={() => setSelected(star)}
-            className="p-0.5 rounded focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            className="p-0.5 rounded focus:outline-none focus:ring-2 focus:ring-emerald-400"
           >
             <Star
               size={28}
               className={
                 star <= (hover || selected)
                   ? "text-amber-500 fill-amber-500 transition-colors"
-                  : "text-gray-300"
+                  : "text-zinc-300"
               }
             />
           </button>
@@ -87,7 +87,7 @@ export function RatingWidget() {
         type="button"
         onClick={handleSubmit}
         disabled={selected < 1 || sending}
-        className="w-full py-2 rounded-xl bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        className="w-full py-2 rounded-xl bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors active:scale-[0.98]"
       >
         {sending ? "…" : t("ratingSubmit")}
       </button>

@@ -17,12 +17,12 @@ export function LocaleSwitcher() {
     <button
       type="button"
       onClick={toggleLocale}
-      className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-indigo-600 transition-colors font-medium px-2.5 py-1.5 rounded-lg hover:bg-indigo-50/50"
+      className="flex items-center gap-1.5 text-sm text-zinc-500 hover:text-emerald-600 transition-colors font-medium px-2.5 py-1.5 rounded-lg hover:bg-emerald-50/50 active:scale-[0.98]"
       aria-label="Switch language"
     >
-      <span className={locale === "en" ? "font-semibold text-indigo-600" : "opacity-70"}>EN</span>
-      <span className="text-gray-300">|</span>
-      <span className={locale === "zh-CN" ? "font-semibold text-indigo-600" : "opacity-70"}>中文</span>
+      <span className={locale === "en" ? "font-semibold text-emerald-600" : "opacity-70"}>EN</span>
+      <span className="text-zinc-300">|</span>
+      <span className={locale === "zh-CN" ? "font-semibold text-emerald-600" : "opacity-70"}>中文</span>
     </button>
   );
 }
