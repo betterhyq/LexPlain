@@ -98,9 +98,6 @@ export default function ResultsPage() {
             <span className="font-bold text-zinc-900 text-lg tracking-tight cursor-pointer" onClick={() => router.push("/")}>{tCommon("appName")}</span>
           </div>
           <div className="flex items-center gap-3">
-            <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-zinc-500">
-              {tCommon("freeNoLogin")}
-            </span>
             <LocaleSwitcher />
             <button
               type="button"

@@ -1,12 +1,25 @@
 @import "tailwindcss";
 
+html, body {
+  font-family: "JINGDONGLangZhengTi2-Semibold", sans-serif;
+}
+
+/* Design tokens (taste-skill: premium easing, no linear) */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-diffusion: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
+  --shadow-diffusion-hover: 0 24px 48px -16px rgba(0, 0, 0, 0.08);
+  --shadow-glass: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), var(--shadow-diffusion);
+  --shadow-glass-hover: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), var(--shadow-diffusion-hover);
+}
+
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes shimmer {
@@ -21,8 +34,8 @@
   to   { opacity: 1; transform: scale(1); }
 }
 
-.animate-fade-in   { animation: fadeIn 0.4s ease both; }
-.animate-slide-up  { animation: slideUp 0.5s ease both; }
+.animate-fade-in   { animation: fadeIn 0.45s var(--ease-out-expo) both; }
+.animate-slide-up  { animation: slideUp 0.5s var(--ease-out-expo) both; }
 .animate-scale-in  { animation: scaleIn 0.35s ease both; }
 .animate-delay-100 { animation-delay: 0.1s; }
 .animate-delay-200 { animation-delay: 0.2s; }
