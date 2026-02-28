@@ -16,7 +16,7 @@ LexPlain is a web app that helps you understand legal documents in plain languag
 - **UI:** React 19, [Tailwind CSS](https://tailwindcss.com) 4, [lucide-react](https://lucide.dev)
 - **i18n:** [next-intl](https://next-intl-docs.vercel.app)
 - **AI:** JoyAI (OpenAI-compatible API) for analysis and Q&A
-- **Storage:** sql.js (SQLite) for stats and ratings
+- **Storage:** Redis for stats and ratings (set `REDIS_URL`)
 
 ## Getting Started
 
@@ -56,7 +56,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 - `src/app/` — App Router: `[locale]/` (home, results), `api/` (analyze, ask, rate, stats)
 - `src/components/` — Reusable UI (ClauseCard, RiskIndicators, RatingWidget, LocaleSwitcher, HeroTypewriter)
-- `src/lib/` — Utilities, AI helpers, DB (sql.js for stats)
+- `src/lib/` — Utilities, AI helpers, DB (Redis for stats)
 - `src/i18n/` — next-intl config and messages
 - `messages/` — Locale JSON files (en, zh-CN)
 

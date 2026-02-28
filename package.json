@@ -21,7 +21,7 @@
     "openai": "6.25.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "sql.js": "1.14.0",
+    "redis": "5.11.0",
     "tailwind-merge": "3.5.0",
     "typed.js": "3.0.0"
   },
@@ -38,7 +38,6 @@
     "eslint": "9.39.3",
     "eslint-config-next": "16.1.6",
     "postcss": "8.5.6",
-    "radis": "2.0.0",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3"
   }

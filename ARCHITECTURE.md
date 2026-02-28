@@ -14,7 +14,7 @@ LexPlain is a Next.js 16 application with App Router, supporting English and Sim
 | UI | React 19, Tailwind CSS 4, lucide-react |
 | i18n | next-intl |
 | AI | JoyAI (OpenAI-compatible API via `openai` SDK) |
-| Storage | sql.js (SQLite in-memory/file for stats) |
+| Storage | Redis (stats: analyses count, ratings count/sum/positive) |
 
 ## Directory Structure
 
@@ -48,16 +48,14 @@ LexPlain/
 │   │   ├── request.ts          # getRequestConfig (messages, locale)
 │   │   └── routing.ts         # locales, defaultLocale, prefix
 │   ├── lib/
-│   │   ├── db.ts               # sql.js: stats, recordAnalysis, recordRating
+│   │   ├── db.ts               # Redis: stats, recordAnalysis, recordRating
 │   │   └── utils.ts            # cn, prompts, JoyAIFetch, parseJoyAIJson
 │   ├── types/
 │   │   ├── index.ts            # Risk, Clause, AnalysisResult
-│   │   └── sql.js.d.ts
 │   └── proxy.ts                # next-intl middleware (locale routing)
 ├── messages/
 │   ├── en.json
 │   └── zh-CN.json
-├── data/                       # sql.js DB file (lexplain.db)
 ├── next.config.ts
 ├── package.json
 └── tsconfig.json
@@ -118,7 +116,7 @@ User question → Results page → POST /api/ask
 ## Storage & Privacy
 
 - **Documents**: Not stored. User input and AI output stay in browser `sessionStorage` for the results page.
-- **Stats DB**: sql.js SQLite at `data/lexplain.db`
+- **Stats**: Redis (env `REDIS_URL`); keys `stats:analyses`, `stats:ratings:*`
   - `analyses`: `id`, `created_at`
   - `ratings`: `id`, `score`, `created_at`
 
