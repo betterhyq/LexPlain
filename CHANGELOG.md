@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v0.0.6
+
+[compare changes](https://github.com/betterhyq/LexPlain/compare/v0.0.5...v0.0.6)
+
+### 🚀 Enhancements
+
+- Add Vercel Lint workflow for automated linting on main branch push ([6b1ea8f](https://github.com/betterhyq/LexPlain/commit/6b1ea8f))
+- Add @vercel/speed-insights dependency and integrate SpeedInsights component ([faf4796](https://github.com/betterhyq/LexPlain/commit/faf4796))
+- Add @vercel/analytics dependency and integrate Analytics component ([4169c9d](https://github.com/betterhyq/LexPlain/commit/4169c9d))
+- Add @vercel/edge-config dependency for enhanced configuration management ([96d2a9f](https://github.com/betterhyq/LexPlain/commit/96d2a9f))
+- Add commitlint configuration for standardized commit messages ([05afc26](https://github.com/betterhyq/LexPlain/commit/05afc26))
+- Add Redis configuration and dependency for improved caching ([421fabc](https://github.com/betterhyq/LexPlain/commit/421fabc))
+
+### 💅 Refactors
+
+- Migrate commitlint configuration from .mjs to .ts format ([1d16199](https://github.com/betterhyq/LexPlain/commit/1d16199))
+- Migrate from sql.js to Redis for data storage ([b97aef7](https://github.com/betterhyq/LexPlain/commit/b97aef7))
+
+### ❤️ Contributors
+
+- Heyongqi10 <heyongqi10@jd.com>
+
 ## v0.0.5
 
 [compare changes](https://github.com/betterhyq/LexPlain/compare/v0.0.4...v0.0.5)
