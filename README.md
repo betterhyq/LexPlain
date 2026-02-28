@@ -1,6 +1,4 @@
-
-
-# LexPlain <img src="./public/logo.png" style="width: 20px; height: 20px;" />
+# LexPlain
 
 LexPlain is a web app that helps you understand legal documents in plain language. Upload a contract or paste text, and get an AI-powered summary, key clauses, and risk highlights—plus ask follow-up questions about your document.
 
@@ -17,7 +15,8 @@ LexPlain is a web app that helps you understand legal documents in plain languag
 - **Framework:** [Next.js](https://nextjs.org) 16 (App Router)
 - **UI:** React 19, [Tailwind CSS](https://tailwindcss.com) 4, [lucide-react](https://lucide.dev)
 - **i18n:** [next-intl](https://next-intl-docs.vercel.app)
-- **AI:** JoyAI for analysis and Q&A
+- **AI:** JoyAI (OpenAI-compatible API) for analysis and Q&A
+- **Storage:** sql.js (SQLite) for stats and ratings
 
 ## Getting Started
 
@@ -32,34 +31,50 @@ LexPlain is a web app that helps you understand legal documents in plain languag
 # Install dependencies
 npm install
 
+# Copy environment variables
+cp .env.example .env
+
+# Edit .env with your JoyAI API credentials
+
 # Run the development server
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Other commands
+### Scripts
 
-```bash
-npm run build   # Production build
-npm run start   # Start production server
-npm run lint    # Run ESLint
-```
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
+| `npm run release` | Generate changelog and release |
 
-## Project structure
+## Project Structure
 
 - `src/app/` — App Router: `[locale]/` (home, results), `api/` (analyze, ask, rate, stats)
-- `src/components/` — Reusable UI (e.g. ClauseCard, RiskIndicators, RatingWidget, LocaleSwitcher)
-- `src/lib/` — Utilities, AI helpers, DB (e.g. sql.js for stats)
+- `src/components/` — Reusable UI (ClauseCard, RiskIndicators, RatingWidget, LocaleSwitcher, HeroTypewriter)
+- `src/lib/` — Utilities, AI helpers, DB (sql.js for stats)
 - `src/i18n/` — next-intl config and messages
+- `messages/` — Locale JSON files (en, zh-CN)
 
-## Environment
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed architecture and data flow.
 
-Ensure any required environment variables for the AI backend (e.g. JoyAI) are set before running. See `.env.example` or project config for details.
+## Environment Variables
 
-## Deploy
+| Variable | Description |
+|----------|-------------|
+| `LLM_API_URL` | JoyAI API base URL |
+| `LLM_API_KEY` | JoyAI API key |
+| `LLM_MODEL` | Model name (e.g. Chatrhino-81B-Pro) |
 
-You can deploy the Next.js app to [Vercel](https://vercel.com) or any platform that supports Node.js. See [Next.js deployment docs](https://nextjs.org/docs/app/building-your-application/deploying) for more.
+Copy `.env.example` to `.env` and fill in your credentials.
+
+## Deployment
+
+Deploy to [Vercel](https://vercel.com) or any Node.js platform. See [Next.js deployment docs](https://nextjs.org/docs/app/building-your-application/deploying) for more.
 
 ## License
 
