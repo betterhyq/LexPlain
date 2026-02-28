@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v0.0.5
+
+[compare changes](https://github.com/betterhyq/LexPlain/compare/v0.0.4...v0.0.5)
+
+### 🚀 Enhancements
+
+- Integrate Biome for code formatting and linting ([b191377](https://github.com/betterhyq/LexPlain/commit/b191377))
+
+### 💅 Refactors
+
+- Replace span with button for app name and improve key generation in results list ([546d38c](https://github.com/betterhyq/LexPlain/commit/546d38c))
+
+### 📖 Documentation
+
+- Add architecture documentation for LexPlain web app ([3ae00b7](https://github.com/betterhyq/LexPlain/commit/3ae00b7))
+- Update README.md for clarity and additional setup instructions ([06f78d8](https://github.com/betterhyq/LexPlain/commit/06f78d8))
+
+### ❤️ Contributors
+
+- Heyongqi10 <heyongqi10@jd.com>
+
 ## v0.0.4
 
 [compare changes](https://github.com/betterhyq/LexPlain/compare/v0.0.3...v0.0.4)
