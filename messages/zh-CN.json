@@ -1,0 +1,89 @@
+{
+  "common": {
+    "appName": "LexPlain",
+    "signIn": "登录",
+    "getStartedFree": "免费开始",
+    "howItWorks": "使用说明",
+    "pricing": "定价",
+    "forTeams": "团队版"
+  },
+  "home": {
+    "badge": "由 DeepSeek 驱动 · 即时结果",
+    "heroTitle": "法律文件，",
+    "heroHighlight": "终于说人话了",
+    "heroSubtitle": "上传任意合同、保密协议、租约或协议。即刻获取摘要、条款解析和风险提示——无需律师。",
+    "statsDocs": "已分析 12,400+ 份文档",
+    "statsTime": "60 秒内出结果",
+    "statsRating": "800+ 用户好评 4.9 / 5",
+    "tabFile": "📎  上传文件",
+    "tabText": "✏️  粘贴文本",
+    "dropHere": "松手即可！",
+    "dragDrop": "拖拽您的文档到此处",
+    "fileHint": "PDF、DOCX 或 TXT · 最多 50 页",
+    "browseFiles": "选择文件",
+    "readyToAnalyze": "准备分析 ✓",
+    "popularTypes": "常见文档类型：",
+    "docTypes": {
+      "nda": "保密协议",
+      "lease": "租约",
+      "employment": "劳动合同",
+      "settlement": "和解协议",
+      "investment": "投资协议"
+    },
+    "pastePlaceholder": "在此粘贴您的合同或法律文本…\n\n我们将分析关键条款、风险，并为您提供通俗易懂的解读。",
+    "analyzeDocument": "分析文档",
+    "analyzing": "正在用 DeepSeek 分析…",
+    "privacyNote": "传输加密 · 分析后不存储 · 每月 2 份免费",
+    "stepUpload": "上传文档",
+    "stepUploadDesc": "PDF、Word 或粘贴文本",
+    "stepAI": "AI 分析",
+    "stepAIDesc": "DeepSeek 逐条解析",
+    "stepResult": "通俗解读",
+    "stepResultDesc": "风险摘要与行动建议",
+    "trustAPI": "API 密钥仅存服务端",
+    "trustDeepSeek": "DeepSeek 驱动",
+    "trustDisclaimer": "不能替代法律意见"
+  },
+  "results": {
+    "exportPdf": "导出 PDF",
+    "newDocument": "← 新建文档",
+    "pages": "页",
+    "words": "字",
+    "highRisk": "高风险",
+    "mediumRisk": "中风险",
+    "lowRisk": "低风险",
+    "highRiskAlert": "检测到 {count} 个高风险条款",
+    "highRiskDesc": "签署前请仔细审阅。建议就标红部分咨询律师。",
+    "plainSummary": "通俗摘要",
+    "whatToDo": "您应该做什么",
+    "keyClauses": "关键条款",
+    "askTitle": "对此文档提问",
+    "askHint": "例如：「能否提前终止？」、「违约会怎样？」",
+    "askPlaceholder": "输入您对此文档的任何问题…",
+    "ask": "提问",
+    "proFeature": "Pro 功能",
+    "getPdfReport": "获取完整 PDF 报告",
+    "pdfReportDesc": "下载包含风险详情、谈判建议和条款注释的可分享报告。",
+    "upgradePro": "升级至 Pro — ¥19/月",
+    "legalDisclaimer": "LexPlain 并非律所，不提供法律意见。签署任何法律文件前请咨询专业律师。"
+  },
+  "risk": {
+    "low": "低",
+    "medium": "中",
+    "high": "高",
+    "lowRiskFull": "低风险",
+    "mediumRiskFull": "中风险",
+    "highRiskFull": "高风险",
+    "lowSub": "多为标准条款",
+    "mediumSub": "部分条款需审阅",
+    "highSub": "存在多项风险"
+  },
+  "errors": {
+    "generic": "出错了，请重试。",
+    "noAnswer": "无法获取回答。"
+  },
+  "metadata": {
+    "title": "LexPlain — 法律文件，说人话",
+    "description": "上传任意合同、保密协议、租约或法律文件。即刻获得通俗摘要、条款解析和风险提示——无需法律背景。"
+  }
+}

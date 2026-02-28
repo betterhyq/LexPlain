@@ -1,29 +1,35 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import {
   Upload, FileText, Shield, Zap, Lock, ArrowRight, X, Sparkles,
   TrendingUp, Scale, Home, Briefcase, FileSignature, CheckCircle,
   Star, Users, Clock,
 } from "lucide-react";
-
-const DOC_TYPES = [
-  { icon: <FileSignature size={16} />, label: "NDA" },
-  { icon: <Home size={16} />, label: "Lease" },
-  { icon: <Briefcase size={16} />, label: "Employment" },
-  { icon: <Scale size={16} />, label: "Settlement" },
-  { icon: <TrendingUp size={16} />, label: "Investment" },
-];
-
-const STEPS = [
-  { icon: <Upload size={18} />, label: "Upload document", desc: "PDF, Word, or paste text" },
-  { icon: <Zap size={18} />, label: "AI analysis", desc: "DeepSeek reads every clause" },
-  { icon: <CheckCircle size={18} />, label: "Plain English", desc: "Risk summary & actions" },
-];
+import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 
 export default function HomePage() {
+  const t = useTranslations("home");
+  const tCommon = useTranslations("common");
+  const tErrors = useTranslations("errors");
   const router = useRouter();
+
+  const DOC_TYPES = [
+    { icon: <FileSignature size={16} />, labelKey: "nda" as const },
+    { icon: <Home size={16} />, labelKey: "lease" as const },
+    { icon: <Briefcase size={16} />, labelKey: "employment" as const },
+    { icon: <Scale size={16} />, labelKey: "settlement" as const },
+    { icon: <TrendingUp size={16} />, labelKey: "investment" as const },
+  ];
+
+  const STEPS = [
+    { icon: <Upload size={18} />, label: t("stepUpload"), desc: t("stepUploadDesc") },
+    { icon: <Zap size={18} />, label: t("stepAI"), desc: t("stepAIDesc") },
+    { icon: <CheckCircle size={18} />, label: t("stepResult"), desc: t("stepResultDesc") },
+  ];
+
   const [dragging, setDragging] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [pasteText, setPasteText] = useState("");
@@ -76,65 +82,62 @@ export default function HomePage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Analysis failed");
 
-      // Store result in sessionStorage and navigate to results page
       sessionStorage.setItem("lexplain_result", JSON.stringify(data));
       sessionStorage.setItem("lexplain_filename", filename);
       router.push("/results");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setError(err instanceof Error ? err.message : tErrors("generic"));
       setLoading(false);
     }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex flex-col">
-      {/* Header */}
       <header className="px-6 py-4">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center shadow-sm">
               <FileText size={16} className="text-white" />
             </div>
-            <span className="font-bold text-gray-900 text-lg">LexPlain</span>
+            <span className="font-bold text-gray-900 text-lg">{tCommon("appName")}</span>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm text-gray-500">
-            <a href="#how" className="hover:text-gray-800 transition-colors">How it works</a>
-            <a href="#" className="hover:text-gray-800 transition-colors">Pricing</a>
-            <a href="#" className="hover:text-gray-800 transition-colors">For Teams</a>
+            <a href="#how" className="hover:text-gray-800 transition-colors">{tCommon("howItWorks")}</a>
+            <a href="#" className="hover:text-gray-800 transition-colors">{tCommon("pricing")}</a>
+            <a href="#" className="hover:text-gray-800 transition-colors">{tCommon("forTeams")}</a>
           </nav>
           <div className="flex items-center gap-3">
+            <LocaleSwitcher />
             <button className="text-sm text-gray-600 font-medium hover:text-gray-900 transition-colors hidden sm:block">
-              Sign in
+              {tCommon("signIn")}
             </button>
             <button className="bg-indigo-600 text-white px-4 py-1.5 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition-colors shadow-sm">
-              Get started free
+              {tCommon("getStartedFree")}
             </button>
           </div>
         </div>
       </header>
 
       <main className="flex-1 flex flex-col items-center px-4 pt-8 pb-16">
-        {/* Hero */}
         <div className="max-w-2xl mx-auto text-center mb-8 animate-fade-in">
           <div className="inline-flex items-center gap-1.5 bg-white/80 border border-indigo-200 text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full mb-5 shadow-sm">
             <Sparkles size={11} />
-            Powered by DeepSeek · Instant results
+            {t("badge")}
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4 tracking-tight">
-            Legal documents,<br />
-            <span className="shimmer-text">finally in plain English</span>
+            {t("heroTitle")}<br />
+            <span className="shimmer-text">{t("heroHighlight")}</span>
           </h1>
           <p className="text-gray-500 text-lg leading-relaxed max-w-lg mx-auto">
-            Upload any contract, NDA, lease, or agreement. Get an instant summary, clause breakdown, and risk flags — without a lawyer.
+            {t("heroSubtitle")}
           </p>
         </div>
 
-        {/* Stats */}
         <div className="flex items-center gap-6 mb-8 animate-fade-in animate-delay-100">
           {[
-            { icon: <Users size={13} />, text: "12,400+ documents analyzed" },
-            { icon: <Clock size={13} />, text: "Results in under 60 seconds" },
-            { icon: <Star size={13} />, text: "4.9 / 5 from 800+ users" },
+            { icon: <Users size={13} />, text: t("statsDocs") },
+            { icon: <Clock size={13} />, text: t("statsTime") },
+            { icon: <Star size={13} />, text: t("statsRating") },
           ].map((s) => (
             <div key={s.text} className="hidden sm:flex items-center gap-1.5 text-xs text-gray-400">
               <span className="text-indigo-400">{s.icon}</span>
@@ -143,15 +146,13 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* Upload card */}
         <div className="w-full max-w-xl animate-slide-up animate-delay-200">
           <div className="bg-white rounded-2xl shadow-xl shadow-indigo-100/50 border border-gray-100 overflow-hidden">
-            {/* Tab toggle */}
             <div className="flex border-b border-gray-100">
               {(["file", "text"] as const).map((mode) => (
                 <button key={mode} onClick={() => setInputMode(mode)}
                   className={`flex-1 py-3 text-sm font-semibold transition-colors ${inputMode === mode ? "text-indigo-600 border-b-2 border-indigo-600" : "text-gray-400 hover:text-gray-600"}`}>
-                  {mode === "file" ? "📎  Upload file" : "✏️  Paste text"}
+                  {mode === "file" ? t("tabFile") : t("tabText")}
                 </button>
               ))}
             </div>
@@ -170,12 +171,12 @@ export default function HomePage() {
                       </div>
                       <div className="text-center">
                         <p className="font-semibold text-gray-700 text-sm">
-                          {dragging ? "Drop it here!" : "Drag & drop your document"}
+                          {dragging ? t("dropHere") : t("dragDrop")}
                         </p>
-                        <p className="text-xs text-gray-400 mt-1">PDF, DOCX, or TXT · up to 50 pages</p>
+                        <p className="text-xs text-gray-400 mt-1">{t("fileHint")}</p>
                       </div>
                       <span className="text-sm text-indigo-600 font-semibold border border-indigo-200 bg-indigo-50 px-4 py-1.5 rounded-lg hover:bg-indigo-100 transition-colors">
-                        Browse files
+                        {t("browseFiles")}
                       </span>
                       <input id="file-upload" type="file" className="hidden" accept=".pdf,.doc,.docx,.txt" onChange={handleFileInput} />
                     </label>
@@ -186,7 +187,7 @@ export default function HomePage() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="font-semibold text-gray-900 text-sm truncate">{file.name}</p>
-                        <p className="text-xs text-indigo-500 mt-0.5">Ready to analyze ✓</p>
+                        <p className="text-xs text-indigo-500 mt-0.5">{t("readyToAnalyze")}</p>
                       </div>
                       <button onClick={() => setFile(null)} className="text-gray-400 hover:text-gray-600 transition-colors">
                         <X size={16} />
@@ -195,12 +196,12 @@ export default function HomePage() {
                   )}
 
                   <div className="mt-4">
-                    <p className="text-xs text-gray-400 mb-2">Popular document types:</p>
+                    <p className="text-xs text-gray-400 mb-2">{t("popularTypes")}</p>
                     <div className="flex flex-wrap gap-2">
                       {DOC_TYPES.map((d) => (
-                        <button key={d.label}
+                        <button key={d.labelKey}
                           className="flex items-center gap-1.5 text-xs text-gray-500 border border-gray-200 rounded-lg px-2.5 py-1 hover:border-indigo-300 hover:text-indigo-600 transition-colors">
-                          {d.icon} {d.label}
+                          {d.icon} {t(`docTypes.${d.labelKey}`)}
                         </button>
                       ))}
                     </div>
@@ -208,7 +209,7 @@ export default function HomePage() {
                 </>
               ) : (
                 <textarea value={pasteText} onChange={(e) => setPasteText(e.target.value)}
-                  placeholder={"Paste your contract or legal text here…\n\nWe'll analyze it for key clauses, risks, and give you a plain-English breakdown."}
+                  placeholder={t("pastePlaceholder")}
                   className="w-full h-44 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:bg-white transition-all" />
               )}
 
@@ -219,28 +220,27 @@ export default function HomePage() {
               )}
 
               <button onClick={handleSubmit} disabled={!canAnalyze || loading}
-                className="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all text-sm shadow-sm">
+                className="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-colors text-sm shadow-sm">
                 {loading ? (
                   <>
                     <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    Analyzing with DeepSeek…
+                    {t("analyzing")}
                   </>
                 ) : (
-                  <>Analyze Document <ArrowRight size={16} /></>
+                  <>{t("analyzeDocument")} <ArrowRight size={16} /></>
                 )}
               </button>
 
               <p className="text-center text-xs text-gray-400 mt-3 flex items-center justify-center gap-1">
                 <Lock size={10} />
-                Encrypted in transit · Never stored after analysis · 2 free docs/month
+                {t("privacyNote")}
               </p>
             </div>
           </div>
         </div>
 
-        {/* How it works */}
         <div id="how" className="max-w-xl w-full mx-auto mt-12 animate-fade-in animate-delay-300">
-          <p className="text-center text-xs font-semibold text-gray-400 uppercase tracking-widest mb-5">How it works</p>
+          <p className="text-center text-xs font-semibold text-gray-400 uppercase tracking-widest mb-5">{tCommon("howItWorks")}</p>
           <div className="grid grid-cols-3 gap-4">
             {STEPS.map((s) => (
               <div key={s.label} className="text-center">
@@ -254,12 +254,11 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Trust */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-6 animate-fade-in animate-delay-400">
           {[
-            { icon: <Shield size={13} />, text: "API key stays server-side" },
-            { icon: <Zap size={13} />, text: "DeepSeek powered" },
-            { icon: <Scale size={13} />, text: "Not a substitute for legal advice" },
+            { icon: <Shield size={13} />, text: t("trustAPI") },
+            { icon: <Zap size={13} />, text: t("trustDeepSeek") },
+            { icon: <Scale size={13} />, text: t("trustDisclaimer") },
           ].map((b) => (
             <div key={b.text} className="flex items-center gap-1.5 text-xs text-gray-400">
               <span className="text-indigo-400">{b.icon}</span>

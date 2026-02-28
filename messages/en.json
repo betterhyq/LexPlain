@@ -1,0 +1,89 @@
+{
+  "common": {
+    "appName": "LexPlain",
+    "signIn": "Sign in",
+    "getStartedFree": "Get started free",
+    "howItWorks": "How it works",
+    "pricing": "Pricing",
+    "forTeams": "For Teams"
+  },
+  "home": {
+    "badge": "Powered by DeepSeek · Instant results",
+    "heroTitle": "Legal documents,",
+    "heroHighlight": "finally in plain English",
+    "heroSubtitle": "Upload any contract, NDA, lease, or agreement. Get an instant summary, clause breakdown, and risk flags — without a lawyer.",
+    "statsDocs": "12,400+ documents analyzed",
+    "statsTime": "Results in under 60 seconds",
+    "statsRating": "4.9 / 5 from 800+ users",
+    "tabFile": "📎  Upload file",
+    "tabText": "✏️  Paste text",
+    "dropHere": "Drop it here!",
+    "dragDrop": "Drag & drop your document",
+    "fileHint": "PDF, DOCX, or TXT · up to 50 pages",
+    "browseFiles": "Browse files",
+    "readyToAnalyze": "Ready to analyze ✓",
+    "popularTypes": "Popular document types:",
+    "docTypes": {
+      "nda": "NDA",
+      "lease": "Lease",
+      "employment": "Employment",
+      "settlement": "Settlement",
+      "investment": "Investment"
+    },
+    "pastePlaceholder": "Paste your contract or legal text here…\n\nWe'll analyze it for key clauses, risks, and give you a plain-English breakdown.",
+    "analyzeDocument": "Analyze Document",
+    "analyzing": "Analyzing with DeepSeek…",
+    "privacyNote": "Encrypted in transit · Never stored after analysis · 2 free docs/month",
+    "stepUpload": "Upload document",
+    "stepUploadDesc": "PDF, Word, or paste text",
+    "stepAI": "AI analysis",
+    "stepAIDesc": "DeepSeek reads every clause",
+    "stepResult": "Plain English",
+    "stepResultDesc": "Risk summary & actions",
+    "trustAPI": "API key stays server-side",
+    "trustDeepSeek": "DeepSeek powered",
+    "trustDisclaimer": "Not a substitute for legal advice"
+  },
+  "results": {
+    "exportPdf": "Export PDF",
+    "newDocument": "← New document",
+    "pages": "pages",
+    "words": "words",
+    "highRisk": "High risk",
+    "mediumRisk": "Medium risk",
+    "lowRisk": "Low risk",
+    "highRiskAlert": "{count, plural, one {# high-risk clause detected} other {# high-risk clauses detected}}",
+    "highRiskDesc": "Review these carefully before signing. Consider consulting a lawyer for the flagged sections.",
+    "plainSummary": "Plain English Summary",
+    "whatToDo": "What you should do",
+    "keyClauses": "Key Clauses",
+    "askTitle": "Ask about this document",
+    "askHint": "e.g. \"Can I terminate early?\" · \"What happens if I breach this?\"",
+    "askPlaceholder": "Ask anything about this document…",
+    "ask": "Ask",
+    "proFeature": "Pro feature",
+    "getPdfReport": "Get the full PDF report",
+    "pdfReportDesc": "Download a shareable report with full risk details, negotiation tips, and clause annotations.",
+    "upgradePro": "Upgrade to Pro — $19/month",
+    "legalDisclaimer": "LexPlain is not a law firm and does not provide legal advice. Always consult a qualified attorney before signing legal documents."
+  },
+  "risk": {
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "lowRiskFull": "Low Risk",
+    "mediumRiskFull": "Medium Risk",
+    "highRiskFull": "High Risk",
+    "lowSub": "Mostly standard terms",
+    "mediumSub": "Some clauses need review",
+    "highSub": "Multiple red flags found"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "noAnswer": "Could not get an answer."
+  },
+  "metadata": {
+    "title": "LexPlain — Legal Documents in Plain English",
+    "description": "Upload any contract, NDA, lease, or legal document. Get an instant plain-language summary, clause breakdown, and risk alerts — no law degree needed."
+  }
+}
