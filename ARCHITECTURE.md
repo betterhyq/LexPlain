@@ -4,7 +4,7 @@ This document describes the architecture of LexPlain, a web app that helps users
 
 ## Overview
 
-LexPlain is a Next.js 16 application with App Router, supporting English and Simplified Chinese. Users can upload documents or paste text, receive AI-generated summaries and risk analysis, and ask follow-up questions. No document storage—analysis runs on input and results stay in the session.
+LexPlain is a Next.js 16 application with App Router, supporting English and Simplified Chinese. Users can upload documents or paste text, receive AI-generated summaries and risk analysis, and ask follow-up questions. No document storage—analysis runs on input and results stay in the session. AI endpoints (analyze, ask) are rate-limited per IP per hour via Redis; when Redis is unavailable, rate limiting is skipped and requests are allowed.
 
 ## Tech Stack
 
@@ -14,7 +14,7 @@ LexPlain is a Next.js 16 application with App Router, supporting English and Sim
 | UI | React 19, Tailwind CSS 4, lucide-react |
 | i18n | next-intl |
 | AI | DeepSeek (OpenAI-compatible API via `openai` SDK) |
-| Storage | Redis (stats: analyses count, ratings count/sum/positive) |
+| Storage | Redis (stats, ratings, per-IP rate limiting: 20 AI requests/hour) |
 
 ## Directory Structure
 
@@ -48,10 +48,11 @@ LexPlain/
 │   │   ├── request.ts          # getRequestConfig (messages, locale)
 │   │   └── routing.ts         # locales, defaultLocale, prefix
 │   ├── lib/
-│   │   ├── db.ts               # Redis: stats, recordAnalysis, recordRating
+│   │   ├── db.ts               # Redis: getStats, recordAnalysis, recordRating
+│   │   ├── ratelimit.ts        # checkAndConsumeAiRateLimit, getClientIp (per-IP, 1h window)
 │   │   └── utils.ts            # cn, prompts, DeepSeekFetch, parseDeepSeekJson
 │   ├── types/
-│   │   ├── index.ts            # Risk, Clause, AnalysisResult
+│   │   └── index.ts            # Risk, Clause, AnalysisResult
 │   └── proxy.ts                # next-intl middleware (locale routing)
 ├── messages/
 │   ├── en.json
@@ -67,6 +68,7 @@ LexPlain/
 
 ```
 User (file/text) → Home page → POST /api/analyze
+  → getClientIp(req), checkAndConsumeAiRateLimit(ip) [Redis; 429 if over limit]
   → lib/utils: getAnalyzeSystemPrompt, DeepSeekFetch
   → DeepSeek API (LLM)
   → parseDeepSeekJson → AnalysisResult
@@ -83,6 +85,7 @@ User (file/text) → Home page → POST /api/analyze
 
 ```
 User question → Results page → POST /api/ask
+  → getClientIp(req), checkAndConsumeAiRateLimit(ip) [same per-IP limit as analyze]
   → body: question, title, summary, clauses, locale
   → DeepSeekFetch (system + user messages)
   → DeepSeek API
@@ -94,9 +97,15 @@ User question → Results page → POST /api/ask
 
 ### 3. Stats & Ratings
 
-- **GET /api/stats**: Returns `{ totalAnalyses, totalRatings, averageRating, positiveCount }`
-- **POST /api/rate**: Body `{ score: 1–5 }` → `recordRating(score)`
-- **recordAnalysis()**: Called after each successful analysis
+- **GET /api/stats**: Returns `{ totalAnalyses, totalRatings, averageRating, positiveCount }` (requires Redis).
+- **POST /api/rate**: Body `{ score: 1–5 }` → `recordRating(score)` (requires Redis).
+- **recordAnalysis()**: Called after each successful analysis.
+
+### 4. Rate Limiting
+
+- **Scope**: `POST /api/analyze` and `POST /api/ask` only.
+- **Logic**: `lib/ratelimit.ts` — `checkAndConsumeAiRateLimit(ip)` uses Redis key `ratelimit:ai:{ip}:{hour}` with a 1-hour fixed window; max 20 requests per IP per window. Each request increments the counter; first request in window sets TTL.
+- **Response**: 429 with `Retry-After` when over limit. When `REDIS_URL` is unset or Redis errors, the function returns `allowed: true` so the request proceeds.
 
 ## AI Integration
 
@@ -116,9 +125,9 @@ User question → Results page → POST /api/ask
 ## Storage & Privacy
 
 - **Documents**: Not stored. User input and AI output stay in browser `sessionStorage` for the results page.
-- **Stats**: Redis (env `REDIS_URL`); keys `stats:analyses`, `stats:ratings:*`
-  - `analyses`: `id`, `created_at`
-  - `ratings`: `id`, `score`, `created_at`
+- **Redis** (env `REDIS_URL`):
+  - **Stats**: `stats:analyses` (count), `stats:ratings:count`, `stats:ratings:sum`, `stats:ratings:positive`
+  - **Rate limiting**: `ratelimit:ai:{ip}:{hour}` — fixed 1-hour window, max 20 requests per IP; TTL set on first request. When Redis is unavailable, `checkAndConsumeAiRateLimit` returns `allowed: true` (no block).
 
 ## Security Headers
 
@@ -156,12 +165,13 @@ interface AnalysisResult {
 
 | Variable | Description |
 |----------|-------------|
-| `LLM_API_URL` | DeepSeek API base URL |
-| `LLM_API_KEY` | DeepSeek API key |
+| `LLM_API_URL` | LLM API base URL (e.g. DeepSeek) |
+| `LLM_API_KEY` | LLM API key |
 | `LLM_MODEL` | Model name (default: DeepSeek-chat) |
+| `REDIS_URL` | Redis URL. Required for `/api/stats` and `/api/rate`. Used for rate limiting; if unset, rate limit check allows all requests. |
 
 ## Deployment
 
 - **Platform**: Vercel or any Node.js host
-- **Build**: `pnpm build` / `npm run build`
-- **Start**: `pnpm start` / `npm run start`
+- **Build**: `pnpm build` (or `npm run build`)
+- **Start**: `pnpm start` (or `npm run start`)
