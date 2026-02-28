@@ -2,8 +2,8 @@ import { type NextRequest, NextResponse } from "next/server";
 import { recordAnalysis } from "@/lib/db";
 import {
   getAnalyzeSystemPrompt,
-  JoyAIFetch,
-  parseJoyAIJson,
+  DeepSeekFetch,
+  parseDeepSeekJson,
 } from "@/lib/utils";
 
 const MIN_TEXT_LENGTH = 20;
@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
     const localeStr = typeof locale === "string" ? locale : "en";
     const systemPrompt = getAnalyzeSystemPrompt(localeStr);
 
-    const response = await JoyAIFetch(
+    const response = await DeepSeekFetch(
       [
         { role: "system", content: systemPrompt },
         {
@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
     if (!response.ok) {
       const err = await response.text();
       return NextResponse.json(
-        { error: `JoyAI error: ${err}` },
+        { error: `DeepSeek error: ${err}` },
         { status: 502 },
       );
     }
@@ -62,12 +62,12 @@ export async function POST(req: NextRequest) {
     const content = data.choices?.[0]?.message?.content;
     if (!content) {
       return NextResponse.json(
-        { error: "Empty response from JoyAI." },
+        { error: "Empty response from DeepSeek." },
         { status: 502 },
       );
     }
 
-    const parsed = parseJoyAIJson(content);
+    const parsed = parseDeepSeekJson(content);
     if (
       !parsed ||
       typeof parsed !== "object" ||

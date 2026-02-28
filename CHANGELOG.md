@@ -85,7 +85,7 @@
 - Update README.md and add logo assets ([88c1bb0](https://github.com/betterhyq/LexPlain/commit/88c1bb0))
 - Adjust typeSpeed for HeroTypewriter component on HomePage ([47c3765](https://github.com/betterhyq/LexPlain/commit/47c3765))
 - Remove border from HomePage steps list for cleaner design ([89e37cb](https://github.com/betterhyq/LexPlain/commit/89e37cb))
-- Integrate OpenAI SDK for enhanced JoyAI functionality ([6519f84](https://github.com/betterhyq/LexPlain/commit/6519f84))
+- Integrate OpenAI SDK for enhanced DeepSeek functionality ([6519f84](https://github.com/betterhyq/LexPlain/commit/6519f84))
 - Add custom font styles for JINGDONGLangZhengTi family ([1408c74](https://github.com/betterhyq/LexPlain/commit/1408c74))
 
 ### 🩹 Fixes

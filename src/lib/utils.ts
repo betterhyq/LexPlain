@@ -44,7 +44,7 @@ export function getAnalyzeSystemPrompt(locale: string = "en"): string {
   return `${SYSTEM_PROMPT_BASE}\n\n${langInstr}\n- Return ONLY the JSON object, no markdown, no explanation`;
 }
 
-export function parseJoyAIJson(content: string): unknown {
+export function parseDeepSeekJson(content: string): unknown {
   const clean = content
     .replace(/^```(?:json)?\s*/i, "")
     .replace(/\s*```$/i, "")
@@ -56,7 +56,7 @@ export function parseJoyAIJson(content: string): unknown {
   }
 }
 
-export async function JoyAIFetch(
+export async function DeepSeekFetch(
   messages: { role: string; content: string }[],
   maxTokens = 2000,
 ): Promise<Response> {
@@ -65,7 +65,7 @@ export async function JoyAIFetch(
   if (!apiUrl || !apiKey) {
     return new Response(
       JSON.stringify({
-        error: "JoyAI is not configured. Set LLM_API_URL and LLM_API_KEY.",
+        error: "DeepSeek is not configured. Set LLM_API_URL and LLM_API_KEY.",
       }),
       { status: 503, headers: { "Content-Type": "application/json" } },
     );
@@ -74,7 +74,7 @@ export async function JoyAIFetch(
   try {
     const client = new OpenAI({ baseURL: apiUrl, apiKey });
     const completion = await client.chat.completions.create({
-      model: process.env.LLM_MODEL || "JoyAI-chat",
+      model: process.env.LLM_MODEL || "DeepSeek-chat",
       messages: messages.map((m) => ({
         role: m.role as "system" | "user" | "assistant",
         content: m.content,

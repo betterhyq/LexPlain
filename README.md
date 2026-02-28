@@ -15,7 +15,7 @@ LexPlain is a web app that helps you understand legal documents in plain languag
 - **Framework:** [Next.js](https://nextjs.org) 16 (App Router)
 - **UI:** React 19, [Tailwind CSS](https://tailwindcss.com) 4, [lucide-react](https://lucide.dev)
 - **i18n:** [next-intl](https://next-intl-docs.vercel.app)
-- **AI:** JoyAI (OpenAI-compatible API) for analysis and Q&A
+- **AI:** DeepSeek (OpenAI-compatible API) for analysis and Q&A
 - **Storage:** Redis for stats and ratings (set `REDIS_URL`)
 
 ## Getting Started
@@ -34,7 +34,7 @@ npm install
 # Copy environment variables
 cp .env.example .env
 
-# Edit .env with your JoyAI API credentials
+# Edit .env with your DeepSeek API credentials
 
 # Run the development server
 npm run dev
@@ -66,8 +66,8 @@ See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed architecture and data flow
 
 | Variable | Description |
 |----------|-------------|
-| `LLM_API_URL` | JoyAI API base URL |
-| `LLM_API_KEY` | JoyAI API key |
+| `LLM_API_URL` | DeepSeek API base URL |
+| `LLM_API_KEY` | DeepSeek API key |
 | `LLM_MODEL` | Model name (e.g. Chatrhino-81B-Pro) |
 
 Copy `.env.example` to `.env` and fill in your credentials.

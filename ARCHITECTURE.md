@@ -13,7 +13,7 @@ LexPlain is a Next.js 16 application with App Router, supporting English and Sim
 | Framework | Next.js 16 (App Router) |
 | UI | React 19, Tailwind CSS 4, lucide-react |
 | i18n | next-intl |
-| AI | JoyAI (OpenAI-compatible API via `openai` SDK) |
+| AI | DeepSeek (OpenAI-compatible API via `openai` SDK) |
 | Storage | Redis (stats: analyses count, ratings count/sum/positive) |
 
 ## Directory Structure
@@ -49,7 +49,7 @@ LexPlain/
 │   │   └── routing.ts         # locales, defaultLocale, prefix
 │   ├── lib/
 │   │   ├── db.ts               # Redis: stats, recordAnalysis, recordRating
-│   │   └── utils.ts            # cn, prompts, JoyAIFetch, parseJoyAIJson
+│   │   └── utils.ts            # cn, prompts, DeepSeekFetch, parseDeepSeekJson
 │   ├── types/
 │   │   ├── index.ts            # Risk, Clause, AnalysisResult
 │   └── proxy.ts                # next-intl middleware (locale routing)
@@ -67,9 +67,9 @@ LexPlain/
 
 ```
 User (file/text) → Home page → POST /api/analyze
-  → lib/utils: getAnalyzeSystemPrompt, JoyAIFetch
-  → JoyAI API (LLM)
-  → parseJoyAIJson → AnalysisResult
+  → lib/utils: getAnalyzeSystemPrompt, DeepSeekFetch
+  → DeepSeek API (LLM)
+  → parseDeepSeekJson → AnalysisResult
   → recordAnalysis() (stats)
   → sessionStorage (lexplain_result, lexplain_filename)
   → redirect /results
@@ -84,8 +84,8 @@ User (file/text) → Home page → POST /api/analyze
 ```
 User question → Results page → POST /api/ask
   → body: question, title, summary, clauses, locale
-  → JoyAIFetch (system + user messages)
-  → JoyAI API
+  → DeepSeekFetch (system + user messages)
+  → DeepSeek API
   → { answer }
 ```
 
@@ -100,7 +100,7 @@ User question → Results page → POST /api/ask
 
 ## AI Integration
 
-- **Provider**: JoyAI (OpenAI-compatible)
+- **Provider**: DeepSeek (OpenAI-compatible)
 - **Config**: `LLM_API_URL`, `LLM_API_KEY`, `LLM_MODEL` (see `.env.example`)
 - **Client**: `openai` SDK with custom `baseURL`
 - **Prompts**: `lib/utils.ts` — `getAnalyzeSystemPrompt(locale)` for analysis; inline system prompt for Q&A
@@ -156,9 +156,9 @@ interface AnalysisResult {
 
 | Variable | Description |
 |----------|-------------|
-| `LLM_API_URL` | JoyAI API base URL |
-| `LLM_API_KEY` | JoyAI API key |
-| `LLM_MODEL` | Model name (default: JoyAI-chat) |
+| `LLM_API_URL` | DeepSeek API base URL |
+| `LLM_API_KEY` | DeepSeek API key |
+| `LLM_MODEL` | Model name (default: DeepSeek-chat) |
 
 ## Deployment
 

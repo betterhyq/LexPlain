@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { JoyAIFetch } from "@/lib/utils";
+import { DeepSeekFetch } from "@/lib/utils";
 
 export async function POST(req: NextRequest) {
   try {
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
         : "Answer in plain English. Be direct and clear.";
     const docTitle = typeof title === "string" ? title : "Document";
 
-    const response = await JoyAIFetch(
+    const response = await DeepSeekFetch(
       [
         {
           role: "system",
@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
     if (!response.ok) {
       const err = await response.text();
       return NextResponse.json(
-        { error: `JoyAI error: ${err}` },
+        { error: `DeepSeek error: ${err}` },
         { status: 502 },
       );
     }
@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
     const answer = data.choices?.[0]?.message?.content;
     if (!answer) {
       return NextResponse.json(
-        { error: "Empty response from JoyAI." },
+        { error: "Empty response from DeepSeek." },
         { status: 502 },
       );
     }
