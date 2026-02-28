@@ -275,24 +275,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div id="how" className="max-w-4xl w-full mx-auto mt-16 animate-fade-in animate-delay-300">
-          <p className="text-left text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-6">{tCommon("howItWorks")}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {STEPS.map((s, i) => (
-              <div
-                key={s.label}
-                className={`p-6 rounded-[2.5rem] bg-white border border-slate-200/50 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_24px_48px_-16px_rgba(0,0,0,0.07)] transition-shadow duration-300 ${i % 2 === 0 ? "md:mr-4" : "md:ml-4"}`}
-              >
-                <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-4 text-emerald-600">
-                  {s.icon}
-                </div>
-                <p className="text-sm font-semibold text-zinc-800">{s.label}</p>
-                <p className="text-xs text-zinc-500 mt-1 leading-relaxed max-w-[32ch]">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
         <div className="max-w-6xl mx-auto w-full mt-12 flex flex-wrap items-center justify-center gap-8 animate-fade-in animate-delay-400">
           {[
             { icon: <Shield size={14} />, text: t("trustAPI") },
